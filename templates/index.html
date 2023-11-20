@@ -3,5 +3,21 @@
 {% block content %}
     <div class="centered">
         <h1>Welcome</h1>
+        <h2>Add Book</h2>
+        <form action="/book" method="POST">
+            <p>Title:<br>
+            <input type="text" name="title"required></p>
+            <p>Author:<br>
+            <input type="text" name="author"required></p>
+            <p>Year:<br>
+            <input type="number" name="year" minlength="1" maxlength="4"required></p>
+            <p>Publisher:<br>
+            <input type="text" name="publisher"required></p>
+            <p>Address:<br>
+            <input type="text" name="address"required></p>
+            <input type="submit" value="Add Book">
+            </form>
+            <a href="/book">See books</a>
+            
     </div>
 {% endblock %}

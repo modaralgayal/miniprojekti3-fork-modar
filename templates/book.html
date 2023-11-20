@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+
+
+    {% for book in books %}
+    <p class="title"><b>Title:</b> {{ book.title }}</p>
+    <p class="author"><b>Author:</b> {{ book.author }}</p>
+    <p class="year"><b>Year:</b> {{ book.b_year }}</p>
+    <p class="publisher"><b>Publisher:</b> {{ book.publisher }}</p>
+    <p class="address"><b>Address:</b> {{ book.b_address }}</p>
+   
+    {% endfor %}
+    <a id="backButton" href="/">Back</a-->
+
+
+{% endblock %}
