@@ -18,5 +18,5 @@ Mane
 - 24.11.: User Stories ja ryhmätyö. (2)
 
 Liisa
-- 23.11.: suunnittelin/koodasin etusivulle valikon, josta voi valita book/article/inproceeding (1h)
-- 24.11.: työskenneltiin ryhmässä, github-kansion hallinnointia, projektin suunnittelua (3h)
+- 23.11.: ryhmässä suunnittelua, + etusivun reference-type-valikko (1.5h)
+- 24.11.: ryhmätyö, github hallinnointia, projektin suunnittelua (2h)
