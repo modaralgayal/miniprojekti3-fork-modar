@@ -1,16 +1,25 @@
 {% extends "base.html" %}
 {% block content %}
 
-
+    <h2>Books</h2>
     {% for book in books %}
     <p class="title"><b>Title:</b> {{ book.title }}</p>
     <p class="author"><b>Author:</b> {{ book.author }}</p>
     <p class="year"><b>Year:</b> {{ book.b_year }}</p>
     <p class="publisher"><b>Publisher:</b> {{ book.publisher }}</p>
-    <p class="address"><b>Address:</b> {{ book.b_address }}</p>
+    <p class="url"><b>URL:</b> {{ book.b_url }}</p>
+    {% endfor %}
+
+    <h2>Articles</h2>
+    {% for article in articles %}
+    <p class="title"><b>Title:</b> {{ article.title }}</p>
+    <p class="author"><b>Author:</b> {{ article.author }}</p>
+    <p class="year"><b>Year:</b> {{ article.a_year }}</p>
+    <p class="publisher"><b>Publisher:</b> {{ article.publisher }}</p>
+    <p class="url"><b>URL:</b> {{ article.a_url }}</p>
    
     {% endfor %}
-    <a id="backButton" href="/">Back</a-->
 
+    <a id="backButton" href="/">Back</a-->
 
 {% endblock %}

@@ -10,5 +10,14 @@ CREATE TABLE books (
     author TEXT,
     b_year INTEGER,
     publisher TEXT,
-    b_address TEXT
+    b_url TEXT
+);
+
+CREATE TABLE articles (
+    article_id SERIAL PRIMARY KEY,
+    title TEXT,
+    author TEXT,
+    a_year INTEGER,
+    publisher TEXT,
+    a_url TEXT
 );
