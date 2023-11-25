@@ -1,25 +1,45 @@
 # miniprojekti3
 
-## Setting up and running:
+## Description:
+
+Miniproject-exercise of group number 3 for a course "TKT20006 - Ohjelmistotuotanto" at University of Helsinki in fall 2023.
+
+## Setting up the project:
 
 Get the source code, clone the project.
 
-Create .env-file to project root with following contents
+The project uses PostgreSQL. It can be installed from /src/documents/resources/local-pg-master-folder.
+It contains using the script "pg-install.sh" and instructions in its own "README.md".
+
+The ".env"-file should NOT be added to git.
+
+Create a file named ".env" to "src"-folder with following contents
 (your_db_name and your_secret_key can be chosen freely at this point):
 >DATABASE_URL="postgresql:///your_db_name"
-> 
 >SECRET_KEY="your_secret_key"
 
-Activate virtual environment and install project dependencies:
+Activate virtual environment and install project dependencies with Poetry:
+> poetry install --no-root
 
->$ python3 -m venv venv
 
->$ source venv/bin/activate
+Define database tables from schema.sql in "src"-folder:
+>$ psql (database_name) < schema.sql
 
->$ pip install -r ./requirements.txt
+## Running the project:
+
+Start the virtual environment and shell:
+> poetry shell
+
+Go to "src"-folder:
+> cd src
 
 Run the Flask application:
-
->$ flask run
+>flask run
 
 Open the flask-webpage with your browser (Usual URL is http://127.0.0.1:5000).
+
+Flask application can be stopped in terminal py pressing:
+> ctrl+c
+
+Shell can be exited with a command:
+> exit
