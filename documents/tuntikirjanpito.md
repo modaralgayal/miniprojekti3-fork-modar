@@ -22,3 +22,4 @@ Mane
 Liisa
 - 23.11.: ryhmässä suunnittelua, + etusivun reference-type-valikko (1.5h)
 - 24.11.: ryhmätyö, github hallinnointia, projektin suunnittelua (2h)
+- 25.11.: dropdown-menu, funktiot ja database artikkelin lisäämiseen (2h)
