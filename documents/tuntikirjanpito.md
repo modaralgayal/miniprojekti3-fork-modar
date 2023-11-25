@@ -1,7 +1,9 @@
 <h2>Tuntikirjanpito</h2>
 
 Yuusuf
-- pv.kk.: mitä tein? (tuntimäärä)
+- 20.11.: flask setup ja postgre setup (2h)
+- 23.11.: Ryhmän kanssa suunittelua (2h)
+- 24.11.: Projektin suunnittelua, ryhmätyötä (2h)
 
 Elina
 - pv.kk.: mitä tein?
