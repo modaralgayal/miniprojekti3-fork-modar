@@ -6,7 +6,10 @@ Yuusuf
 - 24.11.: Projektin suunnittelua, ryhmätyötä (2h)
 
 Elina
-- pv.kk.: mitä tein?
+- 20.11.: flask setup (2h) + kaksi user storia toteutettu (3h)
+- 23.11: seuraavan sprintin suunnittelua yhdessä (1h)
+- 24.11: lisää suunnittelua, tehtävien jakamista (2h)
+- 26.11: robot testien aloittamista (2h)
 
 Jimi
 - pv.kk.: mitä tein?
