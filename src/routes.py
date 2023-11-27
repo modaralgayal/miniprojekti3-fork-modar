@@ -29,14 +29,16 @@ def handle_book():
             #users.check_csrf_token()
             books = book.get_books()
             articles = book.get_articles()
+            inproceedings = book.get_inproceedings()
             if books == []:
                 return redirect("/")
-            return render_template("book.html", books=books, articles=articles)
+            return render_template("book.html", books=books, articles=articles,
+                                   inproceedings=inproceedings)
 
     except Exception as error:
         return error_message(error, request, "/book", "/")
 
-@app.route("/article", methods=["post", "get"])
+@app.route("/article", methods=["post"])
 def handle_article():
     try:
         if request.method == "POST":
@@ -44,19 +46,25 @@ def handle_article():
             title = request.form["title"]
             author = request.form["author"]
             year = request.form["year"]
-            publisher = request.form["publisher"]
+            journal = request.form["journal"]
             url = request.form["url"]
-            book.add_article(title, author, year, publisher, url)
+            book.add_article(title, author, year, journal, url)
             return redirect("/")
-
-        if request.method == "GET":
-            #users.check_csrf_token()
-            articles = book.get_articles()
-            if articles == []:
-                return redirect("/")
-            return render_template("book.html", articles=articles)
 
     except Exception as error:
         return error_message(error, request, "/article", "/")
 
+@app.route("/inproceeding", methods=["post"])
+def handle_inproceeding():
+    try:
+        if request.method == "POST":
+            #users.check_csrf()
+            title = request.form["title"]
+            author = request.form["author"]
+            year = request.form["year"]
+            url = request.form["url"]
+            book.add_inproceeding(title, author, year, url)
+            return redirect("/")
 
+    except Exception as error:
+        return error_message(error, request, "/article", "/")

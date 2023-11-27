@@ -18,6 +18,14 @@ CREATE TABLE articles (
     title TEXT,
     author TEXT,
     a_year INTEGER,
-    publisher TEXT,
+    journal TEXT,
     a_url TEXT
+);
+
+CREATE TABLE inproceedings (
+    inproceeding_id SERIAL PRIMARY KEY,
+    title TEXT,
+    author TEXT,
+    i_year INTEGER,
+    i_url TEXT
 );
