@@ -20,6 +20,15 @@
    
     {% endfor %}
 
+    <h2>Inproceedings</h2>
+    {% for inproceeding in inproceedings %}
+    <p class="title"><b>Title:</b> {{ inproceeding.title }}</p>
+    <p class="author"><b>Author:</b> {{ inproceeding.author }}</p>
+    <p class="year"><b>Year:</b> {{ inproceeding.i_year }}</p>
+    <p class="url"><b>URL:</b> {{ inproceeding.i_url }}</p>
+   
+    {% endfor %}
+
     <a id="backButton" href="/">Back</a-->
 
 {% endblock %}
