@@ -30,8 +30,8 @@ def handle_book():
             books = book.get_books()
             articles = book.get_articles()
             inproceedings = book.get_inproceedings()
-            if books == []:
-                return redirect("/")
+            #if books == []:
+                #return redirect("/")
             return render_template("book.html", books=books, articles=articles,
                                    inproceedings=inproceedings)
 
