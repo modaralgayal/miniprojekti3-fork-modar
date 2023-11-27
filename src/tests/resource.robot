@@ -6,7 +6,7 @@ Library  ../AppLibrary.py
 ${BROWSER}        Chrome
 ${SERVER}  localhost:5000
 
-${DELAY}  5 seconds
+${DELAY}  0.5 seconds
 ${HOME_URL}  http://${SERVER}
 ${BOOK_URL}  http://${SERVER}/book
 

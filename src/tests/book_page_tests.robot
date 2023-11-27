@@ -13,14 +13,17 @@ Test Book Page GET
 
 Test Book Page POST
     # Open Application
-    Go To          ${BOOK_URL}
+    Go To          ${HOME_URL}
+    # Select the "book" option from the dropdown
+    Click Element  id=ref_type
+    Click Element  xpath=//option[@value='book']
     Set Title  Robot Framework
-    Set Author Test Author
+    Set Author  Test Author
     Set Year  2023
     Set Publisher  Test Publisher
     Set URl  https://example.com
     Submit
-    Location Should Be    ${BOOK_URL}/
+    Location Should Be    ${HOME_URL}/
     # Close Application
 
 
