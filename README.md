@@ -43,3 +43,7 @@ Flask application can be stopped in terminal py pressing:
 
 Shell can be exited with a command:
 > exit
+## Documentation
+- [työaikakirjanpito](https://docs.google.com/spreadsheets/d/1tvDweyWHiYNj0rdVt22RT_IMBiqbW4Og1WdRkrPofMc/edit?usp=sharing)
+- [dod](https://github.com/ValioEilax/miniprojekti3/blob/main/src/documents/dod.md)
+- [backlog](https://github.com/users/ValioEilax/projects/1/views/1?layout=table)
