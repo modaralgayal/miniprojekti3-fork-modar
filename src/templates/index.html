@@ -3,6 +3,15 @@
 {% block content %}
     <div class="centered">
         <h1>Welcome</h1>
+        {% if message %}
+            <p id="message" style="display:block;" class="notif">{{ message }}</p>
+        <script>
+            var message = document.getElementById("message");
+            setTimeout(() => {
+                message.style.display = "none";
+            }, 5000)
+        </script>
+        {% endif %}        
         <h2>Add a reference</h2>
         <select name="reference" id="ref_type" onchange="checkType()">
             <option value="none">select an option</option>

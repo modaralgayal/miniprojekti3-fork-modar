@@ -23,7 +23,8 @@ def handle_book():
             publisher = request.form["publisher"]
             url = request.form["url"]
             book.add_book(title, author, year, publisher, url)
-            return redirect("/")
+            return render_template('index.html', 
+                message=f"Added book {title} by {author} to database")
 
         if request.method == "GET":
             #users.check_csrf_token()
@@ -49,7 +50,8 @@ def handle_article():
             journal = request.form["journal"]
             url = request.form["url"]
             book.add_article(title, author, year, journal, url)
-            return redirect("/")
+            return render_template('index.html', 
+                message=f"Added article {title} by {author} to database")
 
     except Exception as error:
         return error_message(error, request, "/article", "/")
@@ -64,7 +66,8 @@ def handle_inproceeding():
             year = request.form["year"]
             url = request.form["url"]
             book.add_inproceeding(title, author, year, url)
-            return redirect("/")
+            return render_template('index.html', 
+                message=f"Added inproceeding {title} by {author} to database")
 
     except Exception as error:
-        return error_message(error, request, "/article", "/")
+        return error_message(error, request, "/inproceeding", "/")
