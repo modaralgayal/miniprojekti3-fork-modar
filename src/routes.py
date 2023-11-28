@@ -2,10 +2,12 @@ from app import app
 from flask import redirect, request, render_template
 import book
 
+
 def error_message(error, req, route, link):
     print(f"The error is {route}({req.method}): {error}")
     user_error = f"({req.method}) in {route}: {type(error).__name__}"
     return render_template("error.html", message=user_error, link=link)
+
 
 @app.route('/')
 def welcome():
@@ -38,6 +40,7 @@ def handle_book():
     except Exception as error:
         return error_message(error, request, "/book", "/")
 
+
 @app.route("/article", methods=["post"])
 def handle_article():
     try:
@@ -54,6 +57,7 @@ def handle_article():
     except Exception as error:
         return error_message(error, request, "/article", "/")
 
+
 @app.route("/inproceeding", methods=["post"])
 def handle_inproceeding():
     try:
@@ -68,3 +72,9 @@ def handle_inproceeding():
 
     except Exception as error:
         return error_message(error, request, "/article", "/")
+
+
+@app.route("/delete_book", methods=["post"])
+def delete_book():
+    book.delete_book(request.form["book_id"])
+    return redirect("/book")

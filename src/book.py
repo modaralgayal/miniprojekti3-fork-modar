@@ -17,12 +17,22 @@ def add_book(title, author, year, publisher, url):
     })
     db.session.commit()
 
+
 def get_books():
     sql = text(
-        '''SELECT title, author, b_year, publisher, b_url FROM books''')
+        '''SELECT book_id, title, author, b_year, publisher, b_url FROM books''')
     result = db.session.execute(sql)
     books = result.fetchall()
     return books
+
+
+def delete_book(id):
+    sql = text(
+        '''DELETE FROM books WHERE book_id=:id''')
+    db.session.execute(sql, {"id": id})
+    db.session.commit()
+    return
+
 
 def add_article(title, author, year, journal, url):
     sql = text(
@@ -37,12 +47,22 @@ def add_article(title, author, year, journal, url):
     })
     db.session.commit()
 
+
 def get_articles():
     sql = text(
-        '''SELECT title, author, a_year, journal, a_url FROM articles''')
+        '''SELECT article_id, title, author, a_year, journal, a_url FROM articles''')
     result = db.session.execute(sql)
     articles = result.fetchall()
     return articles
+
+
+def delete_article(id):
+    sql = text(
+        '''DELETE FROM articles WHERE article_id=:id''')
+    db.session.execute(sql, {"id": id})
+    db.session.commit()
+    return
+
 
 def add_inproceeding(title, author, year, url):
     sql = text(
@@ -56,9 +76,18 @@ def add_inproceeding(title, author, year, url):
     })
     db.session.commit()
 
+
 def get_inproceedings():
     sql = text(
-        '''SELECT title, author, i_year, i_url FROM inproceedings''')
+        '''SELECT inproceeding_id, title, author, i_year, i_url FROM inproceedings''')
     result = db.session.execute(sql)
     inproceedings = result.fetchall()
     return inproceedings
+
+
+def delete_inproceeding(id):
+    sql = text(
+        '''DELETE FROM inproceedings WHERE inproceeding_id=:id''')
+    db.session.execute(sql, {"id": id})
+    db.session.commit()
+    return
