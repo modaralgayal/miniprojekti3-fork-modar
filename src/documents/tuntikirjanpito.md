@@ -21,6 +21,7 @@ Mane
 - 20.11.: Yleinen säätö ja opastus. (3)
 - 24.11.: User Stories ja ryhmätyö. (2)
 - 25.11.: Poetry:n mukaanotto projektiin. (2)
+- 28.11.: UserStory. references listed one-per-row in tables (2)
 
 Liisa
 - 23.11.: ryhmässä suunnittelua, + etusivun reference-type-valikko (1.5h)
