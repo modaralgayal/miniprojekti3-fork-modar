@@ -7,7 +7,7 @@ Suite Teardown  Close Application
 *** Test Cases ***
 Test Book Page GET
     # Open Application
-    Go To          ${BOOK_URL}
+    Go To          ${REFERENCE_URL}
     Page Should Contain    Books
     # Close Application
 
@@ -53,7 +53,7 @@ Set Url
     Input Text  url  ${url}
 
 Add book  
-    Go To  ${BOOK_URL}
+    Go To  ${REFERENCE_URL}
     Set Title  Robot Framework
     Set Author Test Author
     Set Year  2023
