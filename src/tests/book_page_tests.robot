@@ -7,7 +7,7 @@ Suite Teardown  Close Application
 *** Test Cases ***
 Test Book Page GET
     # Open Application
-    Go To          ${REFERENCE_URL}
+    Go To          ${HOME_URL}
     Page Should Contain    Books
     # Close Application
 
@@ -23,7 +23,7 @@ Test Book Page POST
     Set Publisher  Test Publisher
     Set URl  https://example.com
     Submit
-    Location Should Be    ${HOME_URL}/
+    Location Should Be    ${HOME_URL}/book
     # Close Application
 
 
