@@ -1,7 +1,18 @@
 {% extends "base.html" %}
-{% block content %}
+{% block content %}      
 
 <h1 class="centered text-center my-2">Welcome</h1>
+
+{% if message %}
+  <p id="message" style="display:block;" class="notif">{{ message }}</p>
+  <script>
+      var message = document.getElementById("message");
+      setTimeout(() => {
+          message.style.display = "none";
+      }, 5000)
+  </script>
+{% endif %}  
+
 <div id="add_refs"></div>
 <div id="list_refs"></div>
 

@@ -8,3 +8,13 @@ body {
     margin: auto;
     width: 80%;
 }
+
+.notif {
+    color: whitesmoke;
+    font-size: 20px;
+    border-style: solid;
+    border-color: green;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+}

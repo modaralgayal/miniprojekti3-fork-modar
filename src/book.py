@@ -4,16 +4,16 @@ import app
 from db import db
 
 
-def add_book(title, author, year, publisher, url):
+def add_book(title, author, year, publisher, address):
     sql = text(
-        '''INSERT INTO books (title, author, b_year, publisher, b_url)
-        VALUES (:title, :author, :year, :publisher, :url)''')
+        '''INSERT INTO books (title, author, b_year, publisher, b_address)
+        VALUES (:title, :author, :year, :publisher, :address)''')
     db.session.execute(sql, {
         "title": title,
         "author": author,
         "year": year,
         "publisher": publisher,
-        "url": url
+        "address": address
     })
     db.session.commit()
 
@@ -23,6 +23,7 @@ def get_books():
         '''SELECT book_id, title, author, b_year, publisher, b_url FROM books''')
     result = db.session.execute(sql)
     books = result.fetchall()
+    #print(books)
     return books
 
 

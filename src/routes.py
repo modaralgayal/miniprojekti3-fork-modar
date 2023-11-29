@@ -1,6 +1,7 @@
 from app import app
 from flask import redirect, request, render_template
-import book
+import reference
+from db import db
 
 
 def error_message(error, req, route, link):
@@ -59,8 +60,9 @@ def handle_article():
             year = request.form["year"]
             journal = request.form["journal"]
             url = request.form["url"]
-            book.add_article(title, author, year, journal, url)
-            return redirect("/")
+            reference.add_article(title, author, year, journal, url,db)
+            return render_template('index.html', 
+                message=f"Added article {title} by {author} to database")
 
     except Exception as error:
         return error_message(error, request, "/article", "/")
@@ -75,8 +77,9 @@ def handle_inproceeding():
             author = request.form["author"]
             year = request.form["year"]
             url = request.form["url"]
-            book.add_inproceeding(title, author, year, url)
-            return redirect("/")
+            reference.add_inproceeding(title, author, year, url,db)
+            return render_template('index.html', 
+                message=f"Added inproceeding {title} by {author} to database")
 
     except Exception as error:
         return error_message(error, request, "/inproceeding", "/")
