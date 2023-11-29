@@ -24,9 +24,9 @@ def reference_forms():
 def reference_lists():
     try:
         #users.check_csrf_token()
-        books = book.get_books()
-        articles = book.get_articles()
-        inproceedings = book.get_inproceedings()
+        books = reference.get_books()
+        articles = reference.get_articles()
+        inproceedings = reference.get_inproceedings()
         return render_template("list_references.html", books=books, articles=articles,
                                inproceedings=inproceedings)
 
@@ -44,8 +44,9 @@ def handle_book():
             year = request.form["year"]
             publisher = request.form["publisher"]
             url = request.form["url"]
-            book.add_book(title, author, year, publisher, url)
-            return redirect("/")
+            reference.add_book(title, author, year, publisher, url)
+            return render_template('index.html', 
+                message=f"Added book {title} by {author} to database")
     except Exception as error:
         return error_message(error, request, "/book", "/")
 
