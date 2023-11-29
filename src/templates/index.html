@@ -1,91 +1,28 @@
 {% extends "base.html" %}
-{% block title %}Home Page{% endblock %}
-{% block content %}
-    <div class="centered">
-        <h1>Welcome</h1>
-        {% if message %}
-            <p id="message" style="display:block;" class="notif">{{ message }}</p>
-        <script>
-            var message = document.getElementById("message");
-            setTimeout(() => {
-                message.style.display = "none";
-            }, 5000)
-        </script>
-        {% endif %}        
-        <h2>Add a reference</h2>
-        <select name="reference" id="ref_type" onchange="checkType()">
-            <option value="none">select an option</option>
-            <option value="book">book</option>
-            <option value="article">article</option>
-            <option value="inproceeding">inproceeding</option>
-        </select>
-        <form action="/book" method="POST" id="bookForm" style="display:none;">
-            <p>Title:<br>
-            <input type="text" name="title"required></p>
-            <p>Author:<br>
-            <input type="text" name="author"required></p>
-            <p>Year:<br>
-            <input type="number" name="year" minlength="1" maxlength="4"required></p>
-            <p>Publisher:<br>
-            <input type="text" name="publisher"required></p>
-            <p>URL:<br>
-            <input type="text" name="url"required></p>
-            <input type="submit" value="Add Book">
-        </form>
+{% block content %}      
 
-        <form action="/article" method="POST" id="articleForm" style="display:none;">
-            <p>Title:<br>
-            <input type="text" name="title"required></p>
-            <p>Author:<br>
-            <input type="text" name="author"required></p>
-            <p>Journal:<br>
-            <input type="text" name="journal"required></p>
-            <p>Year:<br>
-            <input type="number" name="year" minlength="1" maxlength="4"required></p>
-            <p>URL:<br>
-            <input type="text" name="url"required></p>
-            <input type="submit" value="Add Article">
-        </form>
+<h1 class="centered text-center my-2">Welcome</h1>
 
-        <form action="/inproceeding" method="POST" id="inproceedingForm" style="display:none;">
-            <p>Title:<br>
-            <input type="text" name="title"required></p>
-            <p>Author:<br>
-            <input type="text" name="author"required></p>
-            <p>Year:<br>
-            <input type="number" name="year" minlength="1" maxlength="4"required></p>
-            <p>URL:<br>
-            <input type="text" name="url"required></p>
-            <input type="submit" value="Add Inproceeding">
-        </form>
+{% if message %}
+  <p id="message" style="display:block;" class="notif">{{ message }}</p>
+  <script>
+      var message = document.getElementById("message");
+      setTimeout(() => {
+          message.style.display = "none";
+      }, 5000)
+  </script>
+{% endif %}  
 
-    <script>
-        function checkType(){
-            var selected_type = document.getElementById("ref_type");
-            var bookForm = document.getElementById("bookForm");
-            var articleForm = document.getElementById("articleForm");
-            var inproceedingForm = document.getElementById("inproceedingForm");
+<div id="add_refs"></div>
+<div id="list_refs"></div>
 
-            if (selected_type.value == "none") {
-                bookForm.style.display = "none";
-                articleForm.style.display = "none";
-                inproceedingForm.style.display = "none";
-            } else if (selected_type.value == "book") {
-                bookForm.style.display = "block";
-                articleForm.style.display = "none";
-                inproceedingForm.style.display = "none";
-            } else if (selected_type.value == "article") {
-                articleForm.style.display = "block";
-                bookForm.style.display = "none";
-                inproceedingForm.style.display = "none";
-            } else if (selected_type.value == "inproceeding") {
-                inproceedingForm.style.display = "block";
-                articleForm.style.display = "none";
-                bookForm.style.display = "none";
-            }
-        }
-    </script>
-    <br>
-    <a href="/book">See books</a>
-    </div>
+   <script>
+     $(function() {
+         $("#add_refs").load("reference_forms");
+      });
+      $(function() {
+         $("#list_refs").load("reference_lists");
+      });
+   </script>
+
 {% endblock %}
