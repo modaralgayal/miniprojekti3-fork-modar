@@ -1,0 +1,172 @@
+{% extends "base.html" %}
+{% block title %}Home Page{% endblock %}
+{% block content %}
+    <div class="centered">
+        <h2 class="my-4">Add a reference</h2>
+        <div class="my-2">
+            <label for="ref_type" class="form-label">Select an option</label>
+            <select class="form-select w-25" name="reference" id="ref_type" onchange="checkType()">
+                <option value="book" selected>Book</option>
+                <option value="article">Article</option>
+                <option value="inproceeding">Inproceeding</option>
+            </select>
+        </div>
+
+
+        <form action="/book" method="POST" id="bookForm" style="display:block;">
+            <div class="row g-3 my-2">
+                <div class="col">
+                    <label for="b_title" class="form-label">Title</label>
+                    <input type="text" class="form-control" id="b_title" name="title"
+                           placeholder="Title" required>
+                </div>
+                <div class="col">
+                    <label for="b_author" class="form-label">Author</label>
+                    <input type="text" class="form-control" id="b_author" name="author"
+                           placeholder="Author" required>
+                </div>
+                <div class="col">
+                    <label for="b_year" class="form-label">Year</label>
+                    <input type="number" class="form-control" id="b_year" name="year"
+                           placeholder="Year" minlength="1" maxlength="4" required>
+                </div>
+                <div class="col">
+                    <label for="b_publisher" class="form-label">Publisher</label>
+                    <input type="text" class="form-control" id="b_publisher" name="publisher"
+                           placeholder="Publisher" required>
+                </div>
+                <div class="col">
+                    <label for="b_url" class="form-label">URL</label>
+                    <input type="text" class="form-control" id="b_url" name="url"
+                           placeholder="URL" required>
+                </div>
+            </div>
+            <input class="btn btn-success my-2" type="submit" value="Add Book">
+        </form>
+
+        <form action="/article" method="POST" id="articleForm" style="display:none;">
+            <div class="row g-3 my-2">
+                <div class="col">
+                    <label for="a_title" class="form-label">Title</label>
+                    <input type="text" class="form-control" id="a_title" name="title"
+                           placeholder="Title" required>
+                </div>
+                <div class="col">
+                    <label for="a_author" class="form-label">Author</label>
+                    <input type="text" class="form-control" id="a_author" name="author"
+                           placeholder="Author" required>
+                </div>
+                <div class="col">
+                    <label for="a_year" class="form-label">Year</label>
+                    <input type="number" class="form-control" id="a_year" name="year"
+                           placeholder="Year" minlength="1" maxlength="4" required>
+                </div>
+                <div class="col">
+                    <label for="a_journal" class="form-label">Journal</label>
+                    <input type="text" class="form-control" id="a_journal" name="journal"
+                           placeholder="Journal" required>
+                </div>
+                <div class="col">
+                    <label for="a_url" class="form-label">URL</label>
+                    <input type="text" class="form-control" id="a_url" name="url"
+                           placeholder="URL" required>
+                </div>
+            </div>
+            <input class="btn btn-success my-2" type="submit" value="Add Article">
+        </form>
+
+        <form action="/inproceeding" method="POST" id="inproceedingForm" style="display:none;">
+            <div class="row g-3 my-2">
+                <div class="col">
+                    <label for="i_title" class="form-label">Title</label>
+                    <input type="text" class="form-control" id="i_title" name="title"
+                           placeholder="Title" required>
+                </div>
+                <div class="col">
+                    <label for="i_author" class="form-label">Author</label>
+                    <input type="text" class="form-control" id="i_author" name="author"
+                           placeholder="Author" required>
+                </div>
+                <div class="col">
+                    <label for="i_year" class="form-label">Year</label>
+                    <input type="number" class="form-control" id="i_year" name="year"
+                           placeholder="Year" minlength="1" maxlength="4" required>
+                </div>
+                <div class="col">
+                    <label for="i_url" class="form-label">URL</label>
+                    <input type="text" class="form-control" id="i_url" name="url"
+                           placeholder="URL" required>
+                </div>
+            </div>
+            <input class="btn btn-success my-2" type="submit" value="Add Inproceeding">
+        </form>
+
+{#        <form action="/book" method="POST" id="bookForm" style="display:none;">#}
+{#            <p>Title:<br>#}
+{#            <input type="text" name="title"required></p>#}
+{#            <p>Author:<br>#}
+{#            <input type="text" name="author"required></p>#}
+{#            <p>Year:<br>#}
+{#            <input type="number" name="year" minlength="1" maxlength="4"required></p>#}
+{#            <p>Publisher:<br>#}
+{#            <input type="text" name="publisher"required></p>#}
+{#            <p>URL:<br>#}
+{#            <input type="text" name="url"required></p>#}
+{#            <input type="submit" value="Add Book">#}
+{#        </form>#}
+
+        <form action="/article" method="POST" id="articleForm" style="display:none;">
+            <p>Title:<br>
+            <input type="text" name="title"required></p>
+            <p>Author:<br>
+            <input type="text" name="author"required></p>
+            <p>Journal:<br>
+            <input type="text" name="journal"required></p>
+            <p>Year:<br>
+            <input type="number" name="year" minlength="1" maxlength="4"required></p>
+            <p>URL:<br>
+            <input type="text" name="url"required></p>
+            <input type="submit" value="Add Article">
+        </form>
+
+        <form action="/inproceeding" method="POST" id="inproceedingForm" style="display:none;">
+            <p>Title:<br>
+            <input type="text" name="title"required></p>
+            <p>Author:<br>
+            <input type="text" name="author"required></p>
+            <p>Year:<br>
+            <input type="number" name="year" minlength="1" maxlength="4"required></p>
+            <p>URL:<br>
+            <input type="text" name="url"required></p>
+            <input type="submit" value="Add Inproceeding">
+        </form>
+    </div>
+
+    <script>
+        function checkType(){
+            var selected_type = document.getElementById("ref_type");
+            var bookForm = document.getElementById("bookForm");
+            var articleForm = document.getElementById("articleForm");
+            var inproceedingForm = document.getElementById("inproceedingForm");
+
+            if (selected_type.value == "none") {
+                bookForm.style.display = "none";
+                articleForm.style.display = "none";
+                inproceedingForm.style.display = "none";
+            } else if (selected_type.value == "book") {
+                bookForm.style.display = "block";
+                articleForm.style.display = "none";
+                inproceedingForm.style.display = "none";
+            } else if (selected_type.value == "article") {
+                articleForm.style.display = "block";
+                bookForm.style.display = "none";
+                inproceedingForm.style.display = "none";
+            } else if (selected_type.value == "inproceeding") {
+                inproceedingForm.style.display = "block";
+                articleForm.style.display = "none";
+                bookForm.style.display = "none";
+            }
+        }
+    </script>
+
+{% endblock %}
