@@ -1,2 +1,8 @@
-/src/.env
-/src/__pycache__/
+**/.env
+**/__pycache__/
+**/venv
+log.html
+output.xml
+report.xml
+*.png
+htmlcov
