@@ -24,9 +24,9 @@ def reference_forms():
 def reference_lists():
     try:
         #users.check_csrf_token()
-        books = reference.get_books()
-        articles = reference.get_articles()
-        inproceedings = reference.get_inproceedings()
+        books = reference.get_books(db)
+        articles = reference.get_articles(db)
+        inproceedings = reference.get_inproceedings(db)
         return render_template("list_references.html", books=books, articles=articles,
                                inproceedings=inproceedings)
 
@@ -44,7 +44,7 @@ def handle_book():
             year = request.form["year"]
             publisher = request.form["publisher"]
             url = request.form["url"]
-            reference.add_book(title, author, year, publisher, url)
+            reference.add_book(title, author, year, publisher, url, db)
             return render_template('index.html', 
                 message=f"Added book {title} by {author} to database")
     except Exception as error:
@@ -61,7 +61,7 @@ def handle_article():
             year = request.form["year"]
             journal = request.form["journal"]
             url = request.form["url"]
-            reference.add_article(title, author, year, journal, url,db)
+            reference.add_article(title, author, year, journal, url, db)
             return render_template('index.html', 
                 message=f"Added article {title} by {author} to database")
 
@@ -78,7 +78,7 @@ def handle_inproceeding():
             author = request.form["author"]
             year = request.form["year"]
             url = request.form["url"]
-            reference.add_inproceeding(title, author, year, url,db)
+            reference.add_inproceeding(title, author, year, url, db)
             return render_template('index.html', 
                 message=f"Added inproceeding {title} by {author} to database")
 
