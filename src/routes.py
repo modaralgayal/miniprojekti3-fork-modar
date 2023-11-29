@@ -10,11 +10,30 @@ def error_message(error, req, route, link):
 
 
 @app.route('/')
-def welcome():
+def index():
     return render_template('index.html')
 
 
-@app.route("/book", methods=["post", "get"])
+@app.route('/reference_forms')
+def reference_forms():
+    return render_template('add_references.html')
+
+
+@app.route("/reference_lists")
+def reference_lists():
+    try:
+        #users.check_csrf_token()
+        books = book.get_books()
+        articles = book.get_articles()
+        inproceedings = book.get_inproceedings()
+        return render_template("list_references.html", books=books, articles=articles,
+                               inproceedings=inproceedings)
+
+    except Exception as error:
+        return error_message(error, request, "/", "/")
+
+
+@app.route("/book", methods=["post"])
 def handle_book():
     try:
         if request.method == "POST":
@@ -26,17 +45,6 @@ def handle_book():
             url = request.form["url"]
             book.add_book(title, author, year, publisher, url)
             return redirect("/")
-
-        if request.method == "GET":
-            #users.check_csrf_token()
-            books = book.get_books()
-            articles = book.get_articles()
-            inproceedings = book.get_inproceedings()
-            #if books == []:
-                #return redirect("/")
-            return render_template("book.html", books=books, articles=articles,
-                                   inproceedings=inproceedings)
-
     except Exception as error:
         return error_message(error, request, "/book", "/")
 
@@ -71,10 +79,10 @@ def handle_inproceeding():
             return redirect("/")
 
     except Exception as error:
-        return error_message(error, request, "/article", "/")
+        return error_message(error, request, "/inproceeding", "/")
 
 
 @app.route("/delete_book", methods=["post"])
 def delete_book():
     book.delete_book(request.form["book_id"])
-    return redirect("/book")
+    return redirect("/")
