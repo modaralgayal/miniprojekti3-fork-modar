@@ -1,6 +1,7 @@
 from app import app
 from flask import redirect, request, render_template
-import book
+import reference
+from db import db
 
 def error_message(error, req, route, link):
     print(f"The error is {route}({req.method}): {error}")
@@ -22,15 +23,15 @@ def handle_book():
             year = request.form["year"]
             publisher = request.form["publisher"]
             url = request.form["url"]
-            book.add_book(title, author, year, publisher, url)
+            reference.add_book(title, author, year, publisher, url, db)
             return render_template('index.html', 
                 message=f"Added book {title} by {author} to database")
 
         if request.method == "GET":
             #users.check_csrf_token()
-            books = book.get_books()
-            articles = book.get_articles()
-            inproceedings = book.get_inproceedings()
+            books = reference.get_books(db)
+            articles = reference.get_articles(db)
+            inproceedings = reference.get_inproceedings(db)
             #if books == []:
                 #return redirect("/")
             return render_template("book.html", books=books, articles=articles,
@@ -49,7 +50,7 @@ def handle_article():
             year = request.form["year"]
             journal = request.form["journal"]
             url = request.form["url"]
-            book.add_article(title, author, year, journal, url)
+            reference.add_article(title, author, year, journal, url,db)
             return render_template('index.html', 
                 message=f"Added article {title} by {author} to database")
 
@@ -65,7 +66,7 @@ def handle_inproceeding():
             author = request.form["author"]
             year = request.form["year"]
             url = request.form["url"]
-            book.add_inproceeding(title, author, year, url)
+            reference.add_inproceeding(title, author, year, url,db)
             return render_template('index.html', 
                 message=f"Added inproceeding {title} by {author} to database")
 
