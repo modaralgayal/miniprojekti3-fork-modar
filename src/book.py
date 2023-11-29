@@ -1,29 +1,28 @@
 from flask import session
 from sqlalchemy.sql import text
-import app
-from db import db
+#import app
+#from db import db
 
 
-def add_book(title, author, year, publisher, address):
+def add_book(title, author, year, publisher, url, db):
     sql = text(
-        '''INSERT INTO books (title, author, b_year, publisher, b_address)
-        VALUES (:title, :author, :year, :publisher, :address)''')
+        '''INSERT INTO books (title, author, b_year, publisher, b_url)
+        VALUES (:title, :author, :year, :publisher, :url)''')
     db.session.execute(sql, {
         "title": title,
         "author": author,
         "year": year,
         "publisher": publisher,
-        "address": address
+        "url": url
     })
     db.session.commit()
 
 
-def get_books():
+def get_books(db):
     sql = text(
         '''SELECT book_id, title, author, b_year, publisher, b_url FROM books''')
     result = db.session.execute(sql)
     books = result.fetchall()
-    #print(books)
     return books
 
 
@@ -35,7 +34,7 @@ def delete_book(id):
     return
 
 
-def add_article(title, author, year, journal, url):
+def add_article(title, author, year, journal, url, db):
     sql = text(
         '''INSERT INTO articles (title, author, a_year, journal, a_url)
         VALUES (:title, :author, :year, :journal, :url)''')
@@ -49,7 +48,7 @@ def add_article(title, author, year, journal, url):
     db.session.commit()
 
 
-def get_articles():
+def get_articles(db):
     sql = text(
         '''SELECT article_id, title, author, a_year, journal, a_url FROM articles''')
     result = db.session.execute(sql)
@@ -65,7 +64,7 @@ def delete_article(id):
     return
 
 
-def add_inproceeding(title, author, year, url):
+def add_inproceeding(title, author, year, url, db):
     sql = text(
         '''INSERT INTO inproceedings (title, author, i_year, i_url)
         VALUES (:title, :author, :year, :url)''')
@@ -78,7 +77,7 @@ def add_inproceeding(title, author, year, url):
     db.session.commit()
 
 
-def get_inproceedings():
+def get_inproceedings(db):
     sql = text(
         '''SELECT inproceeding_id, title, author, i_year, i_url FROM inproceedings''')
     result = db.session.execute(sql)
