@@ -1,4 +1,5 @@
 # miniprojekti3
+![GHA workflow badge](https://github.com/ValioEilax/miniprojekti3/workflows/CI/badge.svg)
 
 ## Description:
 
