@@ -1,16 +1,16 @@
 <h2>Tuntikirjanpito</h2>
 
-Yuusuf
+Yusuf:
 - 20.11.: Flask setup ja postgre setup (2h)
 - 23.11.: Ryhmän kanssa suunittelua (1h)
 - 24.11.: Projektin suunnittelua, ryhmätyötä (2h)
-- 26.11.: Robot testien tekoa (2h)
+
 
 Elina
 - 20.11.: flask setup (2h) + kaksi user storia toteutettu (3h)
 - 23.11: seuraavan sprintin suunnittelua yhdessä (1h)
 - 24.11: lisää suunnittelua, tehtävien jakamista (2h)
-- 26.11: robot testien aloittamista (2h)
+
 
 Jimi
 - pv.kk.: mitä tein?

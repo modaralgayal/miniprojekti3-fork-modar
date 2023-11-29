@@ -21,6 +21,3 @@ db.init_app(app)
 app.app_context().push()
 
 import routes
-
-
-
