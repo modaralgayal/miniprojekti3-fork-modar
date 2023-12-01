@@ -33,5 +33,5 @@ jobs:
       - name: Run tests with production environment variable
         run: |
           export production=test
+          export DATABASE_URL="postgresql://postgres@localhost:5432/test"
           poetry run pytest
-
