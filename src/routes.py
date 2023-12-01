@@ -1,5 +1,5 @@
 from app import app
-from flask import redirect, request, render_template
+from flask import redirect, request, render_template, session
 import reference
 from db import db
 
@@ -12,7 +12,12 @@ def error_message(error, req, route, link):
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    if 'message' in session:
+        message = session['message']
+        del session['message']
+    else:
+        message = None
+    return render_template('index.html', message=message)
 
 
 @app.route('/reference_forms')
@@ -45,8 +50,8 @@ def handle_book():
             publisher = request.form["publisher"]
             url = request.form["url"]
             reference.add_book(title, author, year, publisher, url, db)
-            return render_template('index.html', 
-                message=f"Added book {title} by {author} to database")
+            session['message'] = f"Added book {title} by {author} to database"
+            return redirect('/')
     except Exception as error:
         return error_message(error, request, "/book", "/")
 
@@ -62,8 +67,8 @@ def handle_article():
             journal = request.form["journal"]
             url = request.form["url"]
             reference.add_article(title, author, year, journal, url, db)
-            return render_template('index.html', 
-                message=f"Added article {title} by {author} to database")
+            session['message'] = f"Added article {title} by {author} to database"
+            return redirect('/')
 
     except Exception as error:
         return error_message(error, request, "/article", "/")
@@ -79,8 +84,8 @@ def handle_inproceeding():
             year = request.form["year"]
             url = request.form["url"]
             reference.add_inproceeding(title, author, year, url, db)
-            return render_template('index.html', 
-                message=f"Added inproceeding {title} by {author} to database")
+            session['message'] = f"Added inproceeding {title} by {author} to database"
+            return redirect('/')
 
     except Exception as error:
         return error_message(error, request, "/inproceeding", "/")
@@ -88,5 +93,23 @@ def handle_inproceeding():
 
 @app.route("/delete_book", methods=["post"])
 def delete_book():
-    book.delete_book(request.form["book_id"])
-    return redirect("/")
+    book_id = request.form["book_id"]
+    reference.delete_book(book_id, db)
+    session['message'] = f"Deleted book (id: {book_id}) from database"
+    return redirect('/')
+
+
+@app.route("/delete_article", methods=["post"])
+def delete_article():
+    article_id = request.form["article_id"]
+    reference.delete_article(article_id, db)
+    session['message'] = f"Deleted article (id: {article_id}) from database"
+    return redirect('/')
+
+
+@app.route("/delete_inproceeding", methods=["post"])
+def delete_inproceeding():
+    inproceeding_id = request.form["inproceeding_id"]
+    reference.delete_inproceeding(inproceeding_id, db)
+    session['message'] = f"Deleted inproceeding (id: {inproceeding_id}) from database"
+    return redirect('/')
