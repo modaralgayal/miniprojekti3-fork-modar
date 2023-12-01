@@ -1,7 +1,7 @@
 from flask import session
 from sqlalchemy.sql import text
 #import app
-#from db import db
+from db import db
 
 
 def add_book(title, author, year, publisher, url, db):
