@@ -34,7 +34,10 @@ jobs:
         run: |
           export production=test
           export DATABASE_URL="postgresql://test:test@localhost:5432"
-          if [ "$production" == "test" ]; then
-            export DATABASE_URL="postgresql:///testi"
-          fi
           poetry run pytest
+
+          # Check if the environment is set to test
+          if [ "$production" == "test" ]; then
+            # Modify your Python code accordingly
+            sed -i 's|db_address = "postgresql://.*"|db_address = "postgresql:///testi"|g' your_script.py
+          fi
