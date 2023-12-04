@@ -14,9 +14,9 @@ jobs:
       postgres:
         image: postgres:latest
         env:
-          POSTGRES_DB: test
-          POSTGRES_USER: test
-          POSTGRES_PASSWORD: test
+          POSTGRES_DB: test2
+          POSTGRES_USER: test2
+          POSTGRES_PASSWORD: test2
         ports:
           - 5432:5432
     
@@ -32,6 +32,6 @@ jobs:
         run: poetry install
       - name: Run tests with production environment variable
         run: |
-          export production=test
+          export production=test2
           export DATABASE_URL="postgresql://test:test@localhost:5432"
           poetry run pytest
