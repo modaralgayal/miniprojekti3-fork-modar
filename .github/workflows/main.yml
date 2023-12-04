@@ -34,4 +34,7 @@ jobs:
         run: |
           export production=test
           export DATABASE_URL="postgresql://test:test@localhost:5432"
+          if [ "$production" == "test" ]; then
+            export DATABASE_URL="postgresql:///testi"
+          fi
           poetry run pytest
