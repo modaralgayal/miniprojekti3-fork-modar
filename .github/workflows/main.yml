@@ -32,6 +32,6 @@ jobs:
         run: poetry install
       - name: Run tests with production environment variable
         run: |
-          export production=test2
-          export DATABASE_URL="postgresql://test:test@localhost:5432"
+          export production=testi2
+          export DATABASE_URL="postgresql:///testi2"
           poetry run pytest
