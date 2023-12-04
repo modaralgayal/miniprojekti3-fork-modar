@@ -4,5 +4,7 @@
 log.html
 output.xml
 report.xml
+report.html
+*.bib
 *.png
 htmlcov
