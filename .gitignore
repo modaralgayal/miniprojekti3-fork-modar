@@ -6,3 +6,4 @@ output.xml
 report.xml
 *.png
 htmlcov
+**/report.html
