@@ -12,7 +12,7 @@ if getenv("production") == "test":
 else:
     db_address = getenv("DATABASE_URL")
 
-app.config["SQLALCHEMY_DATABASE_URI"] = db_address
+app.config["SQLALCHEMY_DATABASE_URI"] = "postgresql:///kxelina"
 
 app.secret_key = getenv("SECRET_KEY")
 

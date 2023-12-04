@@ -24,6 +24,13 @@ def get_books(db):
     books = result.fetchall()
     return books
 
+def delete_book(book_id, db):
+    sql = text(
+        '''DELETE FROM books WHERE book_id=:id''')
+    db.session.execute(sql, {"id": book_id})
+    db.session.commit()
+    return
+
 def add_article(title, author, year, journal, url,db):
     sql = text(
         '''INSERT INTO articles (title, author, a_year, journal, a_url)
@@ -43,6 +50,13 @@ def get_articles(db):
     result = db.session.execute(sql)
     articles = result.fetchall()
     return articles
+
+def delete_article(article_id, db):
+    sql = text(
+        '''DELETE FROM articles WHERE article_id=:id''')
+    db.session.execute(sql, {"id": article_id})
+    db.session.commit()
+    return
 
 def add_inproceeding(title, author, year, url,db):
     sql = text(
@@ -64,11 +78,58 @@ def get_inproceedings(db):
     return inproceedings
 
 
-# def drop_em_all(db):
-#     sql = text('''
-#         DROP TABLE IF EXISTS books;
-#         DROP TABLE IF EXISTS articles;
-#         DROP TABLE IF EXISTS inproceedings;
-#     ''')
-#     db.session.execute(sql)
-#     db.session.commit()
+def delete_inproceeding(inproceeding_id, db):
+    sql = text(
+        '''DELETE FROM inproceedings WHERE inproceeding_id=:id''')
+    db.session.execute(sql, {"id": inproceeding_id})
+    db.session.commit()
+    return
+
+def get_data(db):
+    result = []
+    print("moi")
+    books = get_books(db)
+    articles = get_articles(db)
+    inproceedings = get_inproceedings(db)
+    result.append(books)
+    result.append(articles)
+    result.append(inproceedings)
+    print(books)
+    print(articles)
+    print(inproceedings)
+    print(result)
+    return result
+
+def template_books(entry):
+    result='@book{'+entry[0]+str(entry[2])+',\n title = "'+entry[0]+'",\n author = "'+entry[1]+'",\n year = '+str(entry[2])+',\n publisher = "'+entry[3]+'",\n url = "'+entry[4]+'",\n}\n\n'
+    print(result)
+    return result
+
+def template_articles(entry):
+    result='@article{'+entry[0]+str(entry[2])+',\n title = "'+entry[0]+'",\n author = "'+entry[1]+'",\n year = '+str(entry[2])+',\n journal = "'+entry[3]+'",\n url = "'+entry[4]+'",\n}\n\n'
+    print(result)
+    return result
+
+def template_inproceedings(entry):
+    result='@inproceedings{'+entry[0]+str(entry[2])+',\n title = "'+entry[0]+'",\n author = "'+entry[1]+'",\n year = '+str(entry[2])+',\n url = "'+entry[3]+'",\n}\n\n'
+    print(result)
+    return result
+
+def write_bibtex_file(data):
+    with open('viitteet.bib', 'w') as file:
+
+        for entry in data[0]:
+            print("moi1")
+            bibtex_entry = template_books(entry)
+            file.write(bibtex_entry)
+
+        for entry in data[1]:
+            print("moi2")
+            bibtex_entry = template_articles(entry)
+            file.write(bibtex_entry)
+
+        for entry in data[2]:
+            print("moi3")
+            bibtex_entry = template_inproceedings(entry)
+            file.write(bibtex_entry)
+

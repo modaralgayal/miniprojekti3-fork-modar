@@ -24,9 +24,10 @@ def reference_forms():
 def reference_lists():
     try:
         #users.check_csrf_token()
-        books = book.get_books()
-        articles = book.get_articles()
-        inproceedings = book.get_inproceedings()
+        books = reference.get_books(db)
+        articles = reference.get_articles(db)
+        inproceedings = reference.get_inproceedings(db)
+        print(books)
         return render_template("list_references.html", books=books, articles=articles,
                                inproceedings=inproceedings)
 
@@ -44,7 +45,7 @@ def handle_book():
             year = request.form["year"]
             publisher = request.form["publisher"]
             url = request.form["url"]
-            book.add_book(title, author, year, publisher, url)
+            reference.add_book(title, author, year, publisher, url, db)
             return redirect("/")
     except Exception as error:
         return error_message(error, request, "/book", "/")
@@ -87,5 +88,15 @@ def handle_inproceeding():
 
 @app.route("/delete_book", methods=["post"])
 def delete_book():
-    book.delete_book(request.form["book_id"])
+    reference.delete_book(request.form["book_id"])
     return redirect("/")
+
+@app.route("/bibtex", methods=["post", "get"])
+def make_bibtex():
+    try:
+        data= reference.get_data(db)
+        reference.write_bibtex_file(data)
+        return redirect("/")
+    except Exception as error:
+        return error_message(error, request, "/bibtex", "/")
+
