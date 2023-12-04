@@ -32,7 +32,7 @@ jobs:
         run: poetry install
       - name: Insert test database tables
         run: |
-          psql -d < src/schema.sql
+          psql -d $POSTGRES_DB < src/schema.sql
       - name: Run tests with production environment variable
         run: |
           export production=test
