@@ -15,10 +15,13 @@ jobs:
         image: postgres:latest
         env:
           POSTGRES_DB: test
-          POSTGRES_USER: test
+          #POSTGRES_USER: test
           POSTGRES_PASSWORD: test
         ports:
           - 5432:5432
+    
+    env: 
+        SQLALCHEMY_DATABASE_URI: postgresql://postgres:test@localhost:5432/test
 
     steps:
       - uses: actions/checkout@v4
@@ -30,21 +33,12 @@ jobs:
         run: pip install poetry
       - name: Install dependencies
         run: poetry install
+      - run: | 
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends postgresql-client
       - name: Insert test database tables
         run: |
-          psql -d $POSTGRES_DB < src/schema.sql
+          psql -d $SQLALCHEMY_DATABASE_URI < src/schema.sql 
       - name: Run tests with production environment variable
         run: |
-          export production=test
-          export DATABASE_URL="postgresql://test:test@localhost:5432"
           poetry run pytest
-
-
-
-
-
-
-
-
-
-
