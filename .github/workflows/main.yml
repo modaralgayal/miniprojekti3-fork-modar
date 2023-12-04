@@ -14,7 +14,7 @@ jobs:
       postgres:
         image: postgres:latest
         env:
-          #POSTGRES_DB: test
+          POSTGRES_DB: test
           POSTGRES_USER: test
           POSTGRES_PASSWORD: test
         ports:
@@ -33,5 +33,10 @@ jobs:
       - name: Run tests with production environment variable
         run: |
           export production=test
+<<<<<<< HEAD
           export DATABASE_URL="postgresql://test:test@localhost:5432"
           poetry run pytest
+=======
+          poetry run pytest
+
+>>>>>>> 53c2fcc (schema)
