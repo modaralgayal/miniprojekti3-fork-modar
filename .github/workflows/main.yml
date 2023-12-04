@@ -38,7 +38,7 @@ jobs:
           sudo apt-get install -y --no-install-recommends postgresql-client
       - name: Insert test database tables
         run: |
-          psql -d $DATABASE_URI < src/schema.sql 
+          psql -d $SQLALCHEMY_DATABASE_URI < src/schema.sql 
       - name: Run tests with production environment variable
         run: |
           poetry run pytest
