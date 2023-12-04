@@ -15,13 +15,13 @@ jobs:
         image: postgres:latest
         env:
           POSTGRES_DB: test
-          #POSTGRES_USER: test
+          POSTGRES_USER: test
           POSTGRES_PASSWORD: test
         ports:
           - 5432:5432
     
-    env: 
-        DATABASE_URI: postgresql://postgres:test@localhost:5432/test
+    #env: 
+        #DATABASE_URI: postgresql://postgres:test@localhost:5432/test
 
     steps:
       - uses: actions/checkout@v4
@@ -35,9 +35,9 @@ jobs:
         run: poetry install
       - name: Insert test database tables
         run: |
-          psql -d $DATABASE_URI < src/schema.sql 
+          psql -d test < src/schema.sql 
       - name: Run tests with production environment variable
         run: |
           export production=test
-          export $DATABASE_URI
+          export DATABASE_URL="postgresql://test:test@localhost:5432"
           poetry run pytest
