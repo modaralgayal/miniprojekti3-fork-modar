@@ -91,3 +91,15 @@ def delete_inproceeding(inproceeding_id, db):
     db.session.execute(sql, {"id": inproceeding_id})
     db.session.commit()
     return
+
+
+def initialize_test_database(db):
+    schemafile = open("delschema.sql", "r")
+    sql = text(schemafile.read())
+    schemafile.close()
+    db.session.execute(sql)
+    schemafile2 = open("schema.sql", "r")
+    sql = text(schemafile2.read())
+    schemafile2.close()
+    db.session.execute(sql)
+    db.session.commit()
