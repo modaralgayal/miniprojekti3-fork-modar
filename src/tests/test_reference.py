@@ -52,14 +52,36 @@ class TestReference(unittest.TestCase):
         self.assertEqual(
             reference.get_inproceedings(db), [])
     
+
     def test_get_data(self):
         test_result = reference.get_data(db)
         self.assertEqual(len(test_result), 3)
 
-'''
+
     def test_template_book(self):
         books = reference.get_books(db)
         book_result = reference.template_books(books[0])
         self.assertEqual(book_result, 
-            '@book{Test book1,- title = "Test book",- author = "Test author",year = 1,publisher = "Test publisher",url = "test url",\n}\n\n')
-'''
+            '@book{Test book1,\n title = "Test book",'+
+            '\n author = "Test author",\n year = 1,'+
+            '\n publisher = "Test publisher",'+
+            '\n url = "test url",\n}\n\n')
+    
+
+    def test_template_article(self):
+        articles = reference.get_articles(db)
+        article_result = reference.template_articles(articles[0])
+        self.assertEqual(article_result, 
+            '@article{Test article2,\n title = "Test article",'+
+            '\n author = "Test author",\n year = 2,'+
+            '\n journal = "Test journal",'+
+            '\n url = "Test url",\n}\n\n')
+
+
+    def test_template_inproceeding(self):
+        inproceedings = reference.get_inproceedings(db)
+        inproceeding_result = reference.template_inproceedings(inproceedings[0])
+        self.assertEqual(inproceeding_result, 
+            '@inproceeding{Test inproceeding3,\n title = "Test inproceeding",'+
+            '\n author = "Test author",\n year = 3,'+
+            '\n url = "Test url",\n}\n\n')
