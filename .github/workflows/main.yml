@@ -30,14 +30,11 @@ jobs:
         run: pip install poetry
       - name: Install dependencies
         run: poetry install
+      - name: Create tables
+        run: |
+          psql -h localhost -U test -d test -a -f src/schema.sql
       - name: Run tests with production environment variable
         run: |
           export production=test
           export DATABASE_URL="postgresql://test:test@localhost:5432"
           poetry run pytest
-
-          # Check if the environment is set to test
-          if [ "$production" == "test" ]; then
-            # Modify your Python code accordingly
-            sed -i 's|db_address = "postgresql://.*"|db_address = "postgresql:///testi"|g' your_script.py
-          fi
