@@ -59,6 +59,7 @@ def delete_article(article_id, db):
         '''DELETE FROM articles WHERE article_id=:id''')
     db.session.execute(sql, {"id": article_id})
     db.session.commit()
+    return
 
 
 
@@ -102,11 +103,13 @@ def get_data(db):
     return result
 
 
+
 def template_books(entry):
     result = '@book{' + entry[1] + str(
         entry[3]) + ',\n title = "' + entry[1] + '",\n author = "' + entry[2] + '",\n year = ' + str(   #pylint: disable=line-too-long
         entry[3]) + ',\n publisher = "' + entry[4] + '",\n url = "' + entry[5] + '",\n}\n\n'
     return result
+
 
 
 def template_articles(entry):
@@ -116,11 +119,13 @@ def template_articles(entry):
     return result
 
 
+
 def template_inproceedings(entry):
     result = '@inproceedings{' + entry[1] + str(
         entry[3]) + ',\n title = "' + entry[1] + '",\n author = "' + entry[2] + '",\n year = ' + str(   #pylint: disable=line-too-long
         entry[3]) + ',\n url = "' + entry[4] + '",\n}\n\n'
     return result
+
 
 
 def write_bibtex_file(data):
