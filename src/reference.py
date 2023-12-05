@@ -26,10 +26,10 @@ def get_books(db):
     return books
 
 
-def delete_book(id):
+def delete_book(book_id, db):
     sql = text(
         '''DELETE FROM books WHERE book_id=:id''')
-    db.session.execute(sql, {"id": id})
+    db.session.execute(sql, {"id": book_id})
     db.session.commit()
     return
 
@@ -56,10 +56,10 @@ def get_articles(db):
     return articles
 
 
-def delete_article(id):
+def delete_article(article_id, db):
     sql = text(
         '''DELETE FROM articles WHERE article_id=:id''')
-    db.session.execute(sql, {"id": id})
+    db.session.execute(sql, {"id": article_id})
     db.session.commit()
     return
 
@@ -85,9 +85,21 @@ def get_inproceedings(db):
     return inproceedings
 
 
-def delete_inproceeding(id):
+def delete_inproceeding(inproceeding_id, db):
     sql = text(
         '''DELETE FROM inproceedings WHERE inproceeding_id=:id''')
-    db.session.execute(sql, {"id": id})
+    db.session.execute(sql, {"id": inproceeding_id})
     db.session.commit()
     return
+
+
+def initialize_test_database(db):
+    schemafile = open("delschema.sql", "r")
+    sql = text(schemafile.read())
+    schemafile.close()
+    db.session.execute(sql)
+    schemafile2 = open("schema.sql", "r")
+    sql = text(schemafile2.read())
+    schemafile2.close()
+    db.session.execute(sql)
+    db.session.commit()
