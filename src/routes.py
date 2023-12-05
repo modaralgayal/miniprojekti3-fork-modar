@@ -69,7 +69,6 @@ def handle_article():
             reference.add_article(title, author, year, journal, url, db)
             session['message'] = f"Added article {title} by {author} to database"
             return redirect('/')
-
     except Exception as error:
         return error_message(error, request, "/article", "/")
 
@@ -86,9 +85,18 @@ def handle_inproceeding():
             reference.add_inproceeding(title, author, year, url, db)
             session['message'] = f"Added inproceeding {title} by {author} to database"
             return redirect('/')
-
     except Exception as error:
         return error_message(error, request, "/inproceeding", "/")
+
+
+@app.route("/bibtex", methods=["post", "get"])
+def make_bibtex():
+    try:
+        data= reference.get_data(db)
+        reference.write_bibtex_file(data)
+        return redirect("/")
+    except Exception as error:
+        return error_message(error, request, "/bibtex", "/")
 
 
 @app.route("/delete_reference", methods=["post"])
