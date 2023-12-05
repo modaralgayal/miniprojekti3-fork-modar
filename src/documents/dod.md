@@ -4,4 +4,4 @@
 - Ominaisuus on koodattu
 - Koodin on katselmoinut ja hyväksynyt ainakin yksi toinen ryhmän jäsen
 - Ominaisuus toimii manuaalisesti
-- Ominaisuudelle on tehty testit ja ne menevät läpi
+- Ominaisuudelle on tehty testit ja testeistä 70-100% menevät läpi

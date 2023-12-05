@@ -8,3 +8,4 @@ report.html
 *.bib
 *.png
 htmlcov
+**/report.html

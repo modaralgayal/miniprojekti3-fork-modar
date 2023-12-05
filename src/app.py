@@ -8,7 +8,9 @@ from flask import Flask
 app = Flask(__name__)
 
 if getenv("production") == "test":
-    db_address = "postgresql:///test"
+    db_address = "postgresql://test:test@localhost:5432"
+# if getenv("production") == "test":
+#     db_address = "postgresql:///testi"
 else:
     db_address = getenv("DATABASE_URL")
 

@@ -7,82 +7,140 @@
           <input type="submit" value="references to bibtex"/>
         </form>
         <h3  class="my-2">Books</h3>
-        <table class="table table-sm table-striped table-hover">
-          <thead>
-            <tr>
-              <th class="col-md-1 text-center" scope="col">#</th>
-              <th class="col-md-3 text-center" scope="col">Title</th>
-              <th class="col-md-3 text-center" scope="col">Author</th>
-              <th class="col-md-1 text-center" scope="col">Year</th>
-              <th class="col-md-2 text-center" scope="col">Publisher</th>
-              <th class="col-md-2 text-center" scope="col">URL</th>
-            </tr>
-          </thead>
-          <tbody>
-              <form action="/delete_book" method="POST">
-                  {% for book in books %}
+        <form action="/delete_book" method="POST">
+            <table class="table table-sm table-striped table-hover align-middle">
+                <thead>
                     <tr>
-                      <th class="text-center" scope="row">{{ book.book_id }}</th>
-                      <td class="text-center">{{ book.title }}</td>
-                      <td class="text-center">{{ book.author }}</td>
-                      <td class="text-center">{{ book.b_year }}</td>
-                      <td class="text-center">{{ book.publisher }}</td>
-                      <td class="text-center">{{ book.b_url }}</td>
+                      <th class="col-sm-1 text-center" scope="col">#</th>
+                      <th class="col-sm-2 text-center" scope="col">Title</th>
+                      <th class="col-sm-2 text-center" scope="col">Author</th>
+                      <th class="col-sm-2 text-center" scope="col">Year</th>
+                      <th class="col-sm-2 text-center" scope="col">Publisher</th>
+                      <th class="col-sm-2 text-center" scope="col">URL</th>
+                      <th class="col-sm-1 text-center" scope="col">Delete</th>
                     </tr>
-                  {% endfor %}
-              </form>
-          </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    {% for book in books %}
+                        <tr>
+                            <th class="text-center" scope="row">{{ book.book_id }}</th>
+                            <td class="text-center">{{ book.title }}</td>
+                            <td class="text-center">{{ book.author }}</td>
+                            <td class="text-center">{{ book.b_year }}</td>
+                            <td class="text-center">{{ book.publisher }}</td>
+                            <td class="text-center">{{ book.b_url }}</td>
+                            <td class="text-center">
+                                <button type="button" class="del-button btn btn-outline-danger" name="book"
+                                        value={{ book.book_id }}>Delete</button>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </form>
 
         <h3 class="my-2">Articles</h3>
-        <table class="table table-sm table-striped table-hover">
-          <thead>
-            <tr>
-              <th class="col-md-1 text-center" scope="col">#</th>
-              <th class="col-md-3 text-center" scope="col">Title</th>
-              <th class="col-md-3 text-center" scope="col">Author</th>
-              <th class="col-md-1 text-center" scope="col">Year</th>
-              <th class="col-md-2 text-center" scope="col">Journal</th>
-              <th class="col-md-2 text-center" scope="col">URL</th>
-            </tr>
-          </thead>
-          <tbody>
-              {% for article in articles %}
-                <tr>
-                  <th class="text-center" scope="row">{{ article.article_id }}</th>
-                  <td class="text-center">{{ article.title }}</td>
-                  <td class="text-center">{{ article.author }}</td>
-                  <td class="text-center">{{ article.a_year }}</td>
-                  <td class="text-center">{{ article.journal }}</td>
-                  <td class="text-center">{{ article.a_url }}</td>
-                </tr>
-              {% endfor %}
-          </tbody>
-        </table>
+        <form action="/delete_article" method="POST">
+            <table class="table table-sm table-striped table-hover align-middle">
+                <thead>
+                    <tr>
+                        <th class="col-sm-1 text-center" scope="col">#</th>
+                        <th class="col-sm-2 text-center" scope="col">Title</th>
+                        <th class="col-sm-2 text-center" scope="col">Author</th>
+                        <th class="col-sm-2 text-center" scope="col">Year</th>
+                        <th class="col-sm-2 text-center" scope="col">Journal</th>
+                        <th class="col-sm-2 text-center" scope="col">URL</th>
+                        <th class="col-sm-1 text-center" scope="col">Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for article in articles %}
+                        <tr>
+                            <th class="text-center" scope="row">{{ article.article_id }}</th>
+                            <td class="text-center">{{ article.title }}</td>
+                            <td class="text-center">{{ article.author }}</td>
+                            <td class="text-center">{{ article.a_year }}</td>
+                            <td class="text-center">{{ article.journal }}</td>
+                            <td class="text-center">{{ article.a_url }}</td>
+                            <td class="text-center">
+                                <button type="button" class="del-button btn btn-outline-danger" name="article"
+                                        value={{ article.article_id }}>Delete</button>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </form>
 
         <h3 class="my-2">Inproceedings</h3>
-        <table class="table table-sm table-striped table-hover">
-          <thead>
-            <tr>
-              <th class="col-md-1 text-center" scope="col">#</th>
-              <th class="col-md-3 text-center" scope="col">Title</th>
-              <th class="col-md-3 text-center" scope="col">Author</th>
-              <th class="col-md-1 text-center" scope="col">Year</th>
-              <th class="col-md-4 text-center" scope="col">URL</th>
-            </tr>
-          </thead>
-          <tbody>
-              {% for inproceeding in inproceedings %}
-                <tr>
-                  <th class="text-center" scope="row">{{ inproceeding.inproceeding_id }}</th>
-                  <td class="text-center">{{ inproceeding.title }}</td>
-                  <td class="text-center">{{ inproceeding.author }}</td>
-                  <td class="text-center">{{ inproceeding.i_year }}</td>
-                  <td class="text-center">{{ inproceeding.i_url }}</td>
-                </tr>
-              {% endfor %}
-          </tbody>
-        </table>
+        <form action="/delete_inproceeding" method="POST">
+            <table class="table table-sm table-striped table-hover align-middle">
+                <thead>
+                    <tr>
+                        <th class="col-sm-1 text-center" scope="col">#</th>
+                        <th class="col-sm-3 text-center" scope="col">Title</th>
+                        <th class="col-sm-3 text-center" scope="col">Author</th>
+                        <th class="col-sm-1 text-center" scope="col">Year</th>
+                        <th class="col-sm-3 text-center" scope="col">URL</th>
+                        <th class="col-sm-1 text-center" scope="col">Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for inproceeding in inproceedings %}
+                        <tr>
+                            <th class="text-center" scope="row">{{ inproceeding.inproceeding_id }}</th>
+                            <td class="text-center">{{ inproceeding.title }}</td>
+                            <td class="text-center">{{ inproceeding.author }}</td>
+                            <td class="text-center">{{ inproceeding.i_year }}</td>
+                            <td class="text-center">{{ inproceeding.i_url }}</td>
+                            <td class="text-center">
+                                <button type="button" class="del-button btn btn-outline-danger" name="inproceeding"
+                                        value={{ inproceeding.inproceeding_id }}>Delete</button>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </form>
     </div>
+
+    <!-- Modal for delete confirmation -->
+    <div class="modal fade" id="modal-del-confirm" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="modalLabel">Request confirmation</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Are you sure you want to delete that <pass id="del-message"></pass><pass>?</pass></p>
+                </div>
+                <div class="modal-footer">
+                    <form action="/delete_reference" method="POST">
+                        <input type="hidden" name="reference_id" value="">
+                        <input type="hidden" name="reference_type" value="">
+                        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-outline-danger" id="del_btn">Delete</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let delButtons = document.getElementsByClassName("del-button");
+        let myFunction = function(e) {
+            let refId = e.target.value
+            let refType = e.target.name
+
+            $('#modal-del-confirm').modal('show');
+            $('#modal-del-confirm').find('input[name="reference_id"]').val(refId);
+            $('#modal-del-confirm').find('input[name="reference_type"]').val(refType);
+            $('#modal-del-confirm').find("#del-message").text(refType);
+        };
+        for (let i = 0; i < delButtons.length; i++) {
+            delButtons[i].addEventListener('click', myFunction, false);
+        }
+    </script>
 
 {% endblock %}

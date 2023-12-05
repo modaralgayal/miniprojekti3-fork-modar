@@ -1,6 +1,6 @@
 from flask import session
 from sqlalchemy.sql import text
-# import app
+#import app
 #from db import db
 
 
@@ -17,12 +17,14 @@ def add_book(title, author, year, publisher, url, db):
     })
     db.session.commit()
 
+
 def get_books(db):
     sql = text(
-        '''SELECT title, author, b_year, publisher, b_url FROM books''')
+        '''SELECT book_id, title, author, b_year, publisher, b_url FROM books''')
     result = db.session.execute(sql)
     books = result.fetchall()
     return books
+
 
 def delete_book(book_id, db):
     sql = text(
@@ -31,7 +33,8 @@ def delete_book(book_id, db):
     db.session.commit()
     return
 
-def add_article(title, author, year, journal, url,db):
+
+def add_article(title, author, year, journal, url, db):
     sql = text(
         '''INSERT INTO articles (title, author, a_year, journal, a_url)
         VALUES (:title, :author, :year, :journal, :url)''')
@@ -44,12 +47,14 @@ def add_article(title, author, year, journal, url,db):
     })
     db.session.commit()
 
+
 def get_articles(db):
     sql = text(
-        '''SELECT title, author, a_year, journal, a_url FROM articles''')
+        '''SELECT article_id, title, author, a_year, journal, a_url FROM articles''')
     result = db.session.execute(sql)
     articles = result.fetchall()
     return articles
+
 
 def delete_article(article_id, db):
     sql = text(
@@ -58,7 +63,9 @@ def delete_article(article_id, db):
     db.session.commit()
     return
 
-def add_inproceeding(title, author, year, url,db):
+
+
+def add_inproceeding(title, author, year, url, db):
     sql = text(
         '''INSERT INTO inproceedings (title, author, i_year, i_url)
         VALUES (:title, :author, :year, :url)''')
@@ -70,9 +77,10 @@ def add_inproceeding(title, author, year, url,db):
     })
     db.session.commit()
 
+
 def get_inproceedings(db):
     sql = text(
-        '''SELECT title, author, i_year, i_url FROM inproceedings''')
+        '''SELECT inproceeding_id, title, author, i_year, i_url FROM inproceedings''')
     result = db.session.execute(sql)
     inproceedings = result.fetchall()
     return inproceedings
@@ -84,6 +92,7 @@ def delete_inproceeding(inproceeding_id, db):
     db.session.execute(sql, {"id": inproceeding_id})
     db.session.commit()
     return
+
 
 def get_data(db):
     result = []
@@ -100,21 +109,25 @@ def get_data(db):
     print(result)
     return result
 
+  
 def template_books(entry):
     result='@book{'+entry[0]+str(entry[2])+',\n title = "'+entry[0]+'",\n author = "'+entry[1]+'",\n year = '+str(entry[2])+',\n publisher = "'+entry[3]+'",\n url = "'+entry[4]+'",\n}\n\n'
     print(result)
     return result
 
+  
 def template_articles(entry):
     result='@article{'+entry[0]+str(entry[2])+',\n title = "'+entry[0]+'",\n author = "'+entry[1]+'",\n year = '+str(entry[2])+',\n journal = "'+entry[3]+'",\n url = "'+entry[4]+'",\n}\n\n'
     print(result)
     return result
 
+  
 def template_inproceedings(entry):
     result='@inproceedings{'+entry[0]+str(entry[2])+',\n title = "'+entry[0]+'",\n author = "'+entry[1]+'",\n year = '+str(entry[2])+',\n url = "'+entry[3]+'",\n}\n\n'
     print(result)
     return result
 
+  
 def write_bibtex_file(data):
     with open('viitteet.bib', 'w') as file:
 
@@ -133,3 +146,14 @@ def write_bibtex_file(data):
             bibtex_entry = template_inproceedings(entry)
             file.write(bibtex_entry)
 
+
+def initialize_test_database(db):
+    schemafile = open("delschema.sql", "r")
+    sql = text(schemafile.read())
+    schemafile.close()
+    db.session.execute(sql)
+    schemafile2 = open("schema.sql", "r")
+    sql = text(schemafile2.read())
+    schemafile2.close()
+    db.session.execute(sql)
+    db.session.commit()

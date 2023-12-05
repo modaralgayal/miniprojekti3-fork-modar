@@ -8,7 +8,7 @@ ${SERVER}  localhost:5000
 
 ${DELAY}  0.5 seconds
 ${HOME_URL}  http://${SERVER}
-${BOOK_URL}  http://${SERVER}/book
+${REFERENCE_URL}  http://${SERVER}/reference
 
 
 *** Keywords ***
