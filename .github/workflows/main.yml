@@ -30,7 +30,9 @@ jobs:
         run: pip install poetry
       - name: Install dependencies
         run: poetry install
-      - name: Create tables
+      - name: Create table
+        env:
+          PGPASSWORD: test
         run: |
           psql -h localhost -U test -d test -a -f src/schema.sql
       - name: Run tests with production environment variable
