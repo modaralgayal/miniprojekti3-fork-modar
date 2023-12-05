@@ -1,3 +1,4 @@
+import routes
 from flask import Flask
 from flask_bootstrap import Bootstrap
 from os import getenv
@@ -21,5 +22,3 @@ app.secret_key = getenv("SECRET_KEY")
 Bootstrap(app)
 db.init_app(app)
 app.app_context().push()
-
-import routes

@@ -64,7 +64,6 @@ def delete_article(article_id, db):
     return
 
 
-
 def add_inproceeding(title, author, year, url, db):
     sql = text(
         '''INSERT INTO inproceedings (title, author, i_year, i_url)
@@ -104,22 +103,28 @@ def get_data(db):
     result.append(inproceedings)
     return result
 
-  
+
 def template_books(entry):
-    result='@book{'+entry[1]+str(entry[3])+',\n title = "'+entry[1]+'",\n author = "'+entry[2]+'",\n year = '+str(entry[3])+',\n publisher = "'+entry[4]+'",\n url = "'+entry[5]+'",\n}\n\n'
+    result = '@book{' + entry[1] + str(
+        entry[3]) + ',\n title = "' + entry[1] + '",\n author = "' + entry[2] + '",\n year = ' + str(
+        entry[3]) + ',\n publisher = "' + entry[4] + '",\n url = "' + entry[5] + '",\n}\n\n'
     return result
 
-  
+
 def template_articles(entry):
-    result='@article{'+entry[1]+str(entry[3])+',\n title = "'+entry[1]+'",\n author = "'+entry[2]+'",\n year = '+str(entry[3])+',\n journal = "'+entry[4]+'",\n url = "'+entry[5]+'",\n}\n\n'
+    result = '@article{' + entry[1] + str(
+        entry[3]) + ',\n title = "' + entry[1] + '",\n author = "' + entry[2] + '",\n year = ' + str(
+        entry[3]) + ',\n journal = "' + entry[4] + '",\n url = "' + entry[5] + '",\n}\n\n'
     return result
 
-  
+
 def template_inproceedings(entry):
-    result='@inproceedings{'+entry[1]+str(entry[3])+',\n title = "'+entry[1]+'",\n author = "'+entry[2]+'",\n year = '+str(entry[3])+',\n url = "'+entry[4]+'",\n}\n\n'
+    result = '@inproceedings{' + entry[1] + str(
+        entry[3]) + ',\n title = "' + entry[1] + '",\n author = "' + entry[2] + '",\n year = ' + str(
+        entry[3]) + ',\n url = "' + entry[4] + '",\n}\n\n'
     return result
 
-  
+
 def write_bibtex_file(data):
     with open('viitteet.bib', 'w') as file:
 
