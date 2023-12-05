@@ -91,25 +91,19 @@ def handle_inproceeding():
         return error_message(error, request, "/inproceeding", "/")
 
 
-@app.route("/delete_book", methods=["post"])
-def delete_book():
-    book_id = request.form["book_id"]
-    reference.delete_book(book_id, db)
-    session['message'] = f"Deleted book (id: {book_id}) from database"
-    return redirect('/')
+@app.route("/delete_reference", methods=["post"])
+def delete_reference():
+    reference_id = request.form["reference_id"]
+    reference_type = request.form["reference_type"]
 
+    if reference_type == "book":
+        reference.delete_book(reference_id, db)
+    elif reference_type == "article":
+        reference.delete_article(reference_id, db)
+    elif reference_type == "inproceeding":
+        reference.delete_inproceeding(reference_id, db)
+    else:
+        return redirect('/')
 
-@app.route("/delete_article", methods=["post"])
-def delete_article():
-    article_id = request.form["article_id"]
-    reference.delete_article(article_id, db)
-    session['message'] = f"Deleted article (id: {article_id}) from database"
-    return redirect('/')
-
-
-@app.route("/delete_inproceeding", methods=["post"])
-def delete_inproceeding():
-    inproceeding_id = request.form["inproceeding_id"]
-    reference.delete_inproceeding(inproceeding_id, db)
-    session['message'] = f"Deleted inproceeding (id: {inproceeding_id}) from database"
+    session['message'] = f"Deleted {reference_type} with id={reference_id} from database"
     return redirect('/')
