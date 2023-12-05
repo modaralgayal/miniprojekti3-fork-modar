@@ -119,7 +119,7 @@ def template_articles(entry):
 
 
 def template_inproceedings(entry):
-    result = '@inproceedings{' + entry[1] + str(
+    result = '@inproceeding{' + entry[1] + str(
         entry[3]) + ',\n title = "' + entry[1] + '",\n author = "' + entry[2] + '",\n year = ' + str(
         entry[3]) + ',\n url = "' + entry[4] + '",\n}\n\n'
     return result
