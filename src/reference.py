@@ -1,7 +1,5 @@
-from flask import session
 from sqlalchemy.sql import text
-#import app
-#from db import db
+
 
 
 def add_book(title, author, year, publisher, url, db):
@@ -31,7 +29,7 @@ def delete_book(book_id, db):
         '''DELETE FROM books WHERE book_id=:id''')
     db.session.execute(sql, {"id": book_id})
     db.session.commit()
-    return
+
 
 
 def add_article(title, author, year, journal, url, db):
@@ -61,7 +59,6 @@ def delete_article(article_id, db):
         '''DELETE FROM articles WHERE article_id=:id''')
     db.session.execute(sql, {"id": article_id})
     db.session.commit()
-    return
 
 
 
@@ -91,7 +88,7 @@ def delete_inproceeding(inproceeding_id, db):
         '''DELETE FROM inproceedings WHERE inproceeding_id=:id''')
     db.session.execute(sql, {"id": inproceeding_id})
     db.session.commit()
-    return
+
 
 
 def get_data(db):
@@ -104,22 +101,28 @@ def get_data(db):
     result.append(inproceedings)
     return result
 
-  
+
 def template_books(entry):
-    result='@book{'+entry[1]+str(entry[3])+',\n title = "'+entry[1]+'",\n author = "'+entry[2]+'",\n year = '+str(entry[3])+',\n publisher = "'+entry[4]+'",\n url = "'+entry[5]+'",\n}\n\n'
+    result = '@book{' + entry[1] + str(
+        entry[3]) + ',\n title = "' + entry[1] + '",\n author = "' + entry[2] + '",\n year = ' + str(   #pylint: disable=line-too-long
+        entry[3]) + ',\n publisher = "' + entry[4] + '",\n url = "' + entry[5] + '",\n}\n\n'
     return result
 
-  
+
 def template_articles(entry):
-    result='@article{'+entry[1]+str(entry[3])+',\n title = "'+entry[1]+'",\n author = "'+entry[2]+'",\n year = '+str(entry[3])+',\n journal = "'+entry[4]+'",\n url = "'+entry[5]+'",\n}\n\n'
+    result = '@article{' + entry[1] + str(
+        entry[3]) + ',\n title = "' + entry[1] + '",\n author = "' + entry[2] + '",\n year = ' + str(   #pylint: disable=line-too-long
+        entry[3]) + ',\n journal = "' + entry[4] + '",\n url = "' + entry[5] + '",\n}\n\n'
     return result
 
-  
+
 def template_inproceedings(entry):
-    result='@inproceedings{'+entry[1]+str(entry[3])+',\n title = "'+entry[1]+'",\n author = "'+entry[2]+'",\n year = '+str(entry[3])+',\n url = "'+entry[4]+'",\n}\n\n'
+    result = '@inproceedings{' + entry[1] + str(
+        entry[3]) + ',\n title = "' + entry[1] + '",\n author = "' + entry[2] + '",\n year = ' + str(   #pylint: disable=line-too-long
+        entry[3]) + ',\n url = "' + entry[4] + '",\n}\n\n'
     return result
 
-  
+
 def write_bibtex_file(data):
     with open('viitteet.bib', 'w') as file:
 
