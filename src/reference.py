@@ -111,19 +111,19 @@ def get_data(db):
 
   
 def template_books(entry):
-    result='@book{'+entry[0]+str(entry[2])+',\n title = "'+entry[0]+'",\n author = "'+entry[1]+'",\n year = '+str(entry[2])+',\n publisher = "'+entry[3]+'",\n url = "'+entry[4]+'",\n}\n\n'
+    result='@book{'+entry[1]+str(entry[3])+',\n title = "'+entry[1]+'",\n author = "'+entry[2]+'",\n year = '+str(entry[3])+',\n publisher = "'+entry[4]+'",\n url = "'+entry[5]+'",\n}\n\n'
     print(result)
     return result
 
   
 def template_articles(entry):
-    result='@article{'+entry[0]+str(entry[2])+',\n title = "'+entry[0]+'",\n author = "'+entry[1]+'",\n year = '+str(entry[2])+',\n journal = "'+entry[3]+'",\n url = "'+entry[4]+'",\n}\n\n'
+    result='@article{'+entry[1]+str(entry[3])+',\n title = "'+entry[1]+'",\n author = "'+entry[2]+'",\n year = '+str(entry[3])+',\n journal = "'+entry[4]+'",\n url = "'+entry[5]+'",\n}\n\n'
     print(result)
     return result
 
   
 def template_inproceedings(entry):
-    result='@inproceedings{'+entry[0]+str(entry[2])+',\n title = "'+entry[0]+'",\n author = "'+entry[1]+'",\n year = '+str(entry[2])+',\n url = "'+entry[3]+'",\n}\n\n'
+    result='@inproceedings{'+entry[1]+str(entry[3])+',\n title = "'+entry[1]+'",\n author = "'+entry[2]+'",\n year = '+str(entry[3])+',\n url = "'+entry[4]+'",\n}\n\n'
     print(result)
     return result
 
