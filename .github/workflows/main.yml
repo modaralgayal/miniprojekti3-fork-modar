@@ -34,6 +34,7 @@ jobs:
         env:
           PGPASSWORD: test
         run: |
+          psql -h localhost -U test -d test -a -f src/delschema.sql
           psql -h localhost -U test -d test -a -f src/schema.sql
       - name: Run tests with production environment variable
         run: |
