@@ -59,7 +59,7 @@ def delete_article(article_id, db):
         '''DELETE FROM articles WHERE article_id=:id''')
     db.session.execute(sql, {"id": article_id})
     db.session.commit()
-    return
+
 
 
 
