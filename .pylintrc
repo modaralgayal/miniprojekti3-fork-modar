@@ -1,0 +1,22 @@
+[MASTER]
+ignore = src/tests/test_reference.py
+
+[MESSAGE CONTROL]
+
+disable=cyclic-import,
+        unused-import,
+        missing-timeout,
+        inconsistent-return-statements,
+        broad-exception-caught,
+        missing-module-docstring,
+        missing-function-docstring,
+        missing-class-docstring,
+        invalid-name,
+        unspecified-encoding,
+        consider-using-with,
+        wrong-import-position
+
+[DESIGN]
+
+max-args = 8
+
