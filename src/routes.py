@@ -92,7 +92,7 @@ def handle_inproceeding():
 @app.route("/bibtex", methods=["post", "get"])
 def make_bibtex():
     try:
-        data= reference.get_data(db)
+        data = reference.get_data(db)
         reference.write_bibtex_file(data)
         return redirect("/")
     except Exception as error:
