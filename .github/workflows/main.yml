@@ -43,11 +43,11 @@ jobs:
           poetry run pytest
       
       - name: Coverage report
-        run:| 
+        run: | 
           export production=test
           poetry run coverage xml
 
 
       - name: Pylin
-        run:| 
+        run: | 
           poetry run pylint src
