@@ -48,7 +48,10 @@ jobs:
 
 
       - name: Install Robot Framework
-        run: pip install robotframework
+        run: | 
+          pip install robotframework
+          pip install robotframework-seleniumlibrary
+
       - name: Setup chromedriver
         uses: nanasess/setup-chromedriver@master
       - name: Configure chromedriver
