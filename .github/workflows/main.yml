@@ -41,11 +41,16 @@ jobs:
           export production=test
           export DATABASE_URL="postgresql://test:test@localhost:5432"
           poetry run pytest
+          poetry run coverage run --branch -m pytest
 
       - name: Pylint
         run: | 
           poetry run pylint src
 
+
+
+      # - name: Run tests
+      #   run: poetry run coverage run --branch -m pytest
 
 
 
