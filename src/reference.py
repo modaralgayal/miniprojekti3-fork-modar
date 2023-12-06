@@ -121,7 +121,7 @@ def template_articles(entry):
 
 
 def template_inproceedings(entry):
-    result = '@inproceedings{' + entry[1] + str(
+    result = '@inproceeding{' + entry[1] + str(
         entry[3]) + ',\n title = "' + entry[1] + '",\n author = "' + entry[2] + '",\n year = ' + str(   #pylint: disable=line-too-long
         entry[3]) + ',\n url = "' + entry[4] + '",\n}\n\n'
     return result
@@ -143,17 +143,6 @@ def write_bibtex_file(data):
             bibtex_entry = template_inproceedings(entry)
             file.write(bibtex_entry)
 
-
-# def initialize_test_database(db):
-#     # schemafile = open("delschema.sql", "r")
-#     # sql = text(schemafile.read())
-#     # schemafile.close()
-#     # db.session.execute(sql)
-#     schemafile2 = open("schema.sql", "r")
-#     sql = text(schemafile2.read())
-#     schemafile2.close()
-#     db.session.execute(sql)
-#     db.session.commit()
 
 def delete_schema_books(db):
     sql = text(
