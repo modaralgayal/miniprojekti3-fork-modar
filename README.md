@@ -19,12 +19,14 @@ Create a file named ".env" to "src"-folder with following contents
 >DATABASE_URL="postgresql:///your_db_name"
 >SECRET_KEY="your_secret_key"
 
-Activate virtual environment and install project dependencies with Poetry:
+Activate virtual environment:
+> source venv/bin/activate
+
+Install project dependencies with Poetry:
 > poetry install --no-root
 
-
 Define database tables from schema.sql in "src"-folder:
->$ psql (database_name) < schema.sql
+> psql (database_name) < schema.sql
 
 ## Running the project:
 
