@@ -6,7 +6,6 @@ import app
 
 class TestReference(unittest.TestCase):
     def setUp(self):
-        # reference.initialize_test_database(db)
         reference.delete_schema_books(db)
         reference.delete_schema_articles(db)
         reference.delete_schema_inproceedings(db)
@@ -113,11 +112,3 @@ class TestReference(unittest.TestCase):
             '\n journal = "Test journal",'+
             '\n url = "Test url",\n}\n\n')
 
-
-    # def test_template_inproceeding(self):
-    #     inproceedings = reference.get_inproceedings(db)
-    #     inproceeding_result = reference.template_inproceedings(inproceedings[0])
-    #     self.assertEqual(inproceeding_result,
-    #         '@inproceeding{Test inproceeding3,\n title = "Test inproceeding",'+
-    #         '\n author = "Test author",\n year = 3,'+
-    #         '\n url = "Test url",\n}\n\n')
