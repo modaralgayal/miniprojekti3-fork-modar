@@ -111,4 +111,3 @@ class TestReference(unittest.TestCase):
             '\n author = "Test author",\n year = 2,'+
             '\n journal = "Test journal",'+
             '\n url = "Test url",\n}\n\n')
-
