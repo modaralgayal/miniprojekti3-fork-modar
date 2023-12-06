@@ -145,10 +145,10 @@ def write_bibtex_file(data):
 
 
 def initialize_test_database(db):
-    schemafile = open("delschema.sql", "r")
-    sql = text(schemafile.read())
-    schemafile.close()
-    db.session.execute(sql)
+    # schemafile = open("delschema.sql", "r")
+    # sql = text(schemafile.read())
+    # schemafile.close()
+    # db.session.execute(sql)
     schemafile2 = open("schema.sql", "r")
     sql = text(schemafile2.read())
     schemafile2.close()
