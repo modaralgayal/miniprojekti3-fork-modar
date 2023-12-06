@@ -144,13 +144,73 @@ def write_bibtex_file(data):
             file.write(bibtex_entry)
 
 
-def initialize_test_database(db):
-    # schemafile = open("delschema.sql", "r")
-    # sql = text(schemafile.read())
-    # schemafile.close()
-    # db.session.execute(sql)
-    schemafile2 = open("./schema.sql", "r")
-    sql = text(schemafile2.read())
-    schemafile2.close()
+# def initialize_test_database(db):
+#     # schemafile = open("delschema.sql", "r")
+#     # sql = text(schemafile.read())
+#     # schemafile.close()
+#     # db.session.execute(sql)
+#     schemafile2 = open("schema.sql", "r")
+#     sql = text(schemafile2.read())
+#     schemafile2.close()
+#     db.session.execute(sql)
+#     db.session.commit()
+
+def delete_schema_books(db):
+    sql = text(
+        '''DROP TABLE IF EXISTS books ''')
+    db.session.execute(sql)
+    db.session.commit()
+
+
+def delete_schema_articles(db):
+    sql = text(
+        '''DROP TABLE IF EXISTS articles ''')
+    db.session.execute(sql)
+    db.session.commit()
+
+
+def delete_schema_inproceedings(db):
+    sql = text(
+        '''DROP TABLE IF EXISTS inproceedings ''')
+    db.session.execute(sql)
+    db.session.commit()
+
+
+def create_schema_book(db):
+    sql = text(
+        '''CREATE TABLE books (
+    book_id SERIAL PRIMARY KEY,
+    title TEXT,
+    author TEXT,
+    b_year INTEGER,
+    publisher TEXT,
+    b_url TEXT
+); ''')
+    db.session.execute(sql)
+    db.session.commit()
+
+def create_schema_articles(db):
+    sql = text(
+        '''CREATE TABLE articles (
+    article_id SERIAL PRIMARY KEY,
+    title TEXT,
+    author TEXT,
+    a_year INTEGER,
+    journal TEXT,
+    a_url TEXT
+); ''')
+    db.session.execute(sql)
+    db.session.commit()
+
+
+def create_schema_inproceedings(db):
+    sql = text(
+        '''CREATE TABLE inproceedings (
+    inproceeding_id SERIAL PRIMARY KEY,
+    title TEXT,
+    author TEXT,
+    i_year INTEGER,
+    i_url TEXT
+); ''')
     db.session.execute(sql)
     db.session.commit()
