@@ -41,3 +41,13 @@ jobs:
           export production=test
           export DATABASE_URL="postgresql://test:test@localhost:5432"
           poetry run pytest
+      
+      - name: Coverage report
+        run:| 
+          export production=test
+          poetry run coverage xml
+
+
+      - name: Pylin
+        run:| 
+          poetry run pylint src

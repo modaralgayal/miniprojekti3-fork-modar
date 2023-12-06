@@ -87,7 +87,7 @@ class TestReference(unittest.TestCase):
         reference.delete_inproceeding(1, db)
         self.assertEqual(
             reference.get_inproceedings(db), [])
-   
+
 
     def test_get_data(self):
         test_result = reference.get_data(db)
