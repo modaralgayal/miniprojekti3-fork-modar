@@ -111,3 +111,12 @@ class TestReference(unittest.TestCase):
             '\n author = "Test author",\n year = 2,'+
             '\n journal = "Test journal",'+
             '\n url = "Test url",\n}\n\n')
+
+
+    def test_template_inproceeding(self):
+        inproceedings = reference.get_inproceedings(db)
+        inproceeding_result = reference.template_inproceedings(inproceedings[0])
+        self.assertEqual(inproceeding_result,
+            '@inproceeding{Test inproceeding3,\n title = "Test inproceeding",'+
+            '\n author = "Test author",\n year = 3,'+
+            '\n url = "Test url",\n}\n\n')
