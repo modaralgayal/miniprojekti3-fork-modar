@@ -45,8 +45,6 @@ jobs:
       - name: Pylint
         run: | 
           poetry run pylint src
-
-
       - name: Setup chromedriver
         uses: nanasess/setup-chromedriver@master
       - name: Configure chromedriver
