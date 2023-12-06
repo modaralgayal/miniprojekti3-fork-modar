@@ -48,10 +48,7 @@ jobs:
 
 
       - name: Install Robot Framework
-        run: | 
-          pip install robotframework
-          pip install robotframework-seleniumlibrary
-
+        run: pip install robotframework
       - name: Setup chromedriver
         uses: nanasess/setup-chromedriver@master
       - name: Configure chromedriver
@@ -60,5 +57,5 @@ jobs:
           chromedriver --url-base=/wd/hub &
           sudo Xvfb -ac :99 -screen 0 1280x1024x24 > /dev/null 2>&1 &
       - name: Run robot tests
-        run: robot src
+        run: bash run_robot_tests.sh
 
