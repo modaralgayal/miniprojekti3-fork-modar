@@ -47,8 +47,6 @@ jobs:
           poetry run pylint src
 
 
-      - name: Install Robot Framework
-        run: pip install robotframework
       - name: Setup chromedriver
         uses: nanasess/setup-chromedriver@master
       - name: Configure chromedriver
