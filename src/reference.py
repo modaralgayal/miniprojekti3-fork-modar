@@ -149,7 +149,7 @@ def initialize_test_database(db):
     # sql = text(schemafile.read())
     # schemafile.close()
     # db.session.execute(sql)
-    schemafile2 = open("schema.sql", "r")
+    schemafile2 = open("./schema.sql", "r")
     sql = text(schemafile2.read())
     schemafile2.close()
     db.session.execute(sql)
