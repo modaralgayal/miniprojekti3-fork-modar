@@ -170,7 +170,7 @@ def create_schema_book(db):
     db.session.execute(sql)
     db.session.commit()
 
-    
+
 def create_schema_articles(db):
     sql = text(
         '''CREATE TABLE articles (

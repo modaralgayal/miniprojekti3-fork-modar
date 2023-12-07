@@ -1,5 +1,5 @@
-from app import app
 from flask import redirect, request, render_template, session, send_file
+from app import app
 import reference
 from db import db
 
@@ -31,7 +31,6 @@ def reference_forms():
 @app.route("/reference_lists")
 def reference_lists():
     try:
-        # users.check_csrf_token()
         books = reference.get_books(db)
         articles = reference.get_articles(db)
         inproceedings = reference.get_inproceedings(db)
@@ -48,7 +47,6 @@ def reference_lists():
 def handle_book():
     try:
         if request.method == "POST":
-            # users.check_csrf()
             title = request.form["title"]
             author = request.form["author"]
             year = request.form["year"]
@@ -58,8 +56,8 @@ def handle_book():
             session['message'] = f"Added book {title} by {author} to database"
             session['message_type'] = 'success'
             return redirect('/')
-    except Exception as error:
-        session['message'] = f"Error when adding book"
+    except Exception:
+        session['message'] = "Error when adding book"
         session['message_type'] = 'danger'
         return redirect('/')
 
@@ -68,7 +66,6 @@ def handle_book():
 def handle_article():
     try:
         if request.method == "POST":
-            # users.check_csrf()
             title = request.form["title"]
             author = request.form["author"]
             year = request.form["year"]
@@ -78,8 +75,8 @@ def handle_article():
             session['message'] = f"Added article {title} by {author} to database"
             session['message_type'] = 'success'
             return redirect('/')
-    except Exception as error:
-        session['message'] = f"Error when adding article"
+    except Exception:
+        session['message'] = "Error when adding article"
         session['message_type'] = 'danger'
         return redirect('/')
 
@@ -88,7 +85,6 @@ def handle_article():
 def handle_inproceeding():
     try:
         if request.method == "POST":
-            # users.check_csrf()
             title = request.form["title"]
             author = request.form["author"]
             year = request.form["year"]
@@ -97,8 +93,8 @@ def handle_inproceeding():
             session['message'] = f"Added inproceeding {title} by {author} to database"
             session['message_type'] = 'success'
             return redirect('/')
-    except Exception as error:
-        session['message'] = f"Error when adding inproceeding"
+    except Exception:
+        session['message'] = "Error when adding inproceeding"
         session['message_type'] = 'danger'
         return redirect('/')
 
@@ -110,8 +106,8 @@ def bibtex_file():
         reference.write_bibtex_file(data)
         path = 'viitteet.bib'
         return send_file(path, as_attachment=True)
-    except Exception as error:
-        session['message'] = f"Error when downloading Bibtex.file"
+    except Exception:
+        session['message'] = "Error when downloading Bibtex.file"
         session['message_type'] = 'danger'
         return redirect('/')
 
