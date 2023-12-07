@@ -52,3 +52,4 @@ Shell can be exited with a command:
 - [Työaikakirjanpito & Sprint Backlog](https://docs.google.com/spreadsheets/d/1tvDweyWHiYNj0rdVt22RT_IMBiqbW4Og1WdRkrPofMc/edit?usp=sharing)
 - [Definition of Done](https://github.com/ValioEilax/miniprojekti3/blob/main/src/documents/dod.md)
 - [Product Backlog](https://github.com/users/ValioEilax/projects/1/views/1?layout=table)
+- [Retro](https://github.com/ValioEilax/miniprojekti3/blob/main/src/documents/retro.md)
