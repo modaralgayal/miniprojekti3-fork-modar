@@ -31,12 +31,15 @@ def reference_forms():
 @app.route("/reference_lists")
 def reference_lists():
     try:
-        #users.check_csrf_token()
+        # users.check_csrf_token()
         books = reference.get_books(db)
         articles = reference.get_articles(db)
         inproceedings = reference.get_inproceedings(db)
-        return render_template("list_references.html", books=books, articles=articles,
-                               inproceedings=inproceedings)
+        return render_template(
+            "list_references.html",
+            books=books,
+            articles=articles,
+            inproceedings=inproceedings)
     except Exception as error:
         return error_message(error, request, "/", "/")
 
@@ -45,7 +48,7 @@ def reference_lists():
 def handle_book():
     try:
         if request.method == "POST":
-            #users.check_csrf()
+            # users.check_csrf()
             title = request.form["title"]
             author = request.form["author"]
             year = request.form["year"]
@@ -65,7 +68,7 @@ def handle_book():
 def handle_article():
     try:
         if request.method == "POST":
-            #users.check_csrf()
+            # users.check_csrf()
             title = request.form["title"]
             author = request.form["author"]
             year = request.form["year"]
@@ -85,7 +88,7 @@ def handle_article():
 def handle_inproceeding():
     try:
         if request.method == "POST":
-            #users.check_csrf()
+            # users.check_csrf()
             title = request.form["title"]
             author = request.form["author"]
             year = request.form["year"]

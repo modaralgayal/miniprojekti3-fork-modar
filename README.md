@@ -1,5 +1,6 @@
 # miniprojekti3
-![GHA workflow badge](https://github.com/ValioEilax/miniprojekti3/workflows/CI/badge.svg)
+![GHA workflow badge](https://github.com/ValioEilax/miniprojekti3/workflows/CI/badge.svg) 
+[![codecov](https://codecov.io/gh/ValioEilax/miniprojekti3/graph/badge.svg?token=8WIEWYAJCL)](https://codecov.io/gh/ValioEilax/miniprojekti3)
 
 ## Description:
 
@@ -19,12 +20,14 @@ Create a file named ".env" to "src"-folder with following contents
 >DATABASE_URL="postgresql:///your_db_name"
 >SECRET_KEY="your_secret_key"
 
-Activate virtual environment and install project dependencies with Poetry:
+Activate virtual environment:
+> source venv/bin/activate
+
+Install project dependencies with Poetry:
 > poetry install --no-root
 
-
 Define database tables from schema.sql in "src"-folder:
->$ psql (database_name) < schema.sql
+> psql (database_name) < schema.sql
 
 ## Running the project:
 
@@ -46,6 +49,7 @@ Shell can be exited with a command:
 > exit
 
 ## Documentation
-- [Työaikakirjanpito](https://docs.google.com/spreadsheets/d/1tvDweyWHiYNj0rdVt22RT_IMBiqbW4Og1WdRkrPofMc/edit?usp=sharing)
+- [Työaikakirjanpito & Sprint Backlog](https://docs.google.com/spreadsheets/d/1tvDweyWHiYNj0rdVt22RT_IMBiqbW4Og1WdRkrPofMc/edit?usp=sharing)
 - [Definition of Done](https://github.com/ValioEilax/miniprojekti3/blob/main/src/documents/dod.md)
-- [Product & Sprint Backlogs](https://github.com/users/ValioEilax/projects/1/views/1?layout=table)
+- [Product Backlog](https://github.com/users/ValioEilax/projects/1/views/1?layout=table)
+- [Retro](https://github.com/ValioEilax/miniprojekti3/blob/main/src/documents/retro.md)

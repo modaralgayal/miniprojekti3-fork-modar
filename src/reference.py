@@ -1,7 +1,4 @@
-from flask import session
 from sqlalchemy.sql import text
-#import app
-#from db import db
 
 
 def add_book(title, author, year, publisher, url, db):
@@ -31,7 +28,6 @@ def delete_book(book_id, db):
         '''DELETE FROM books WHERE book_id=:id''')
     db.session.execute(sql, {"id": book_id})
     db.session.commit()
-    return
 
 
 def add_article(title, author, year, journal, url, db):
@@ -61,8 +57,6 @@ def delete_article(article_id, db):
         '''DELETE FROM articles WHERE article_id=:id''')
     db.session.execute(sql, {"id": article_id})
     db.session.commit()
-    return
-
 
 
 def add_inproceeding(title, author, year, url, db):
@@ -91,69 +85,115 @@ def delete_inproceeding(inproceeding_id, db):
         '''DELETE FROM inproceedings WHERE inproceeding_id=:id''')
     db.session.execute(sql, {"id": inproceeding_id})
     db.session.commit()
-    return
+
 
 
 def get_data(db):
     result = []
-    # print("moi")
     books = get_books(db)
     articles = get_articles(db)
     inproceedings = get_inproceedings(db)
     result.append(books)
     result.append(articles)
     result.append(inproceedings)
-    # print(books)
-    # print(articles)
-    # print(inproceedings)
-    # print(result)
     return result
 
-  
+
 def template_books(entry):
-    result='@book{'+entry[1]+str(entry[3])+',\n title = "'+entry[1]+'",\n author = "'+entry[2]+'",\n year = '+str(entry[3])+',\n publisher = "'+entry[4]+'",\n url = "'+entry[5]+'",\n}\n\n'
-    # print(result)
+    result = '@book{' + entry[1] + str(
+        entry[3]) + ',\n title = "' + entry[1] + '",\n author = "' + entry[2] + '",\n year = ' + str(   #pylint: disable=line-too-long
+        entry[3]) + ',\n publisher = "' + entry[4] + '",\n url = "' + entry[5] + '",\n}\n\n'
     return result
 
-  
+
 def template_articles(entry):
-    result='@article{'+entry[1]+str(entry[3])+',\n title = "'+entry[1]+'",\n author = "'+entry[2]+'",\n year = '+str(entry[3])+',\n journal = "'+entry[4]+'",\n url = "'+entry[5]+'",\n}\n\n'
-    # print(result)
+    result = '@article{' + entry[1] + str(
+        entry[3]) + ',\n title = "' + entry[1] + '",\n author = "' + entry[2] + '",\n year = ' + str(   #pylint: disable=line-too-long
+        entry[3]) + ',\n journal = "' + entry[4] + '",\n url = "' + entry[5] + '",\n}\n\n'
     return result
 
-  
+
 def template_inproceedings(entry):
-    result='@inproceedings{'+entry[1]+str(entry[3])+',\n title = "'+entry[1]+'",\n author = "'+entry[2]+'",\n year = '+str(entry[3])+',\n url = "'+entry[4]+'",\n}\n\n'
-    # print(result)
+    result = '@inproceeding{' + entry[1] + str(
+        entry[3]) + ',\n title = "' + entry[1] + '",\n author = "' + entry[2] + '",\n year = ' + str(   #pylint: disable=line-too-long
+        entry[3]) + ',\n url = "' + entry[4] + '",\n}\n\n'
     return result
 
-  
+
 def write_bibtex_file(data):
     with open('viitteet.bib', 'w') as file:
 
         for entry in data[0]:
-            # print("moi1")
             bibtex_entry = template_books(entry)
             file.write(bibtex_entry)
 
         for entry in data[1]:
-            # print("moi2")
             bibtex_entry = template_articles(entry)
             file.write(bibtex_entry)
 
         for entry in data[2]:
-            # print("moi3")
             bibtex_entry = template_inproceedings(entry)
             file.write(bibtex_entry)
 
 
-def initialize_test_database(db):
-    schemafile = open("delschema.sql", "r")
-    sql = text(schemafile.read())
-    schemafile.close()
-    db.session.execute(sql)
-    schemafile2 = open("schema.sql", "r")
-    sql = text(schemafile2.read())
-    schemafile2.close()
+def delete_schema_books(db):
+    sql = text(
+        '''DROP TABLE IF EXISTS books ''')
     db.session.execute(sql)
     db.session.commit()
+
+
+def delete_schema_articles(db):
+    sql = text(
+        '''DROP TABLE IF EXISTS articles ''')
+    db.session.execute(sql)
+    db.session.commit()
+
+
+def delete_schema_inproceedings(db):
+    sql = text(
+        '''DROP TABLE IF EXISTS inproceedings ''')
+    db.session.execute(sql)
+    db.session.commit()
+
+
+def create_schema_book(db):
+    sql = text(
+        '''CREATE TABLE books (
+    book_id SERIAL PRIMARY KEY,
+    title TEXT,
+    author TEXT,
+    b_year INTEGER,
+    publisher TEXT,
+    b_url TEXT
+); ''')
+    db.session.execute(sql)
+    db.session.commit()
+
+    
+def create_schema_articles(db):
+    sql = text(
+        '''CREATE TABLE articles (
+    article_id SERIAL PRIMARY KEY,
+    title TEXT,
+    author TEXT,
+    a_year INTEGER,
+    journal TEXT,
+    a_url TEXT
+); ''')
+    db.session.execute(sql)
+    db.session.commit()
+
+
+def create_schema_inproceedings(db):
+    sql = text(
+        '''CREATE TABLE inproceedings (
+    inproceeding_id SERIAL PRIMARY KEY,
+    title TEXT,
+    author TEXT,
+    i_year INTEGER,
+    i_url TEXT
+); ''')
+    db.session.execute(sql)
+    db.session.commit()
+    
