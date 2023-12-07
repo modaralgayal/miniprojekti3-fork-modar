@@ -1,28 +1,30 @@
 {% extends "base.html" %}
 {% block content %}      
 
-<h1 class="centered text-center my-2">Welcome</h1>
+    {% if message %}
+        <div id="message" class="alert alert-{{ message_type }}" role="alert">
+            {{ message }}
+        </div>
+        <script>
+            let message = document.getElementById("message");
+                setTimeout(() => {
+                message.style.display = "none";
+            }, 5000)
+        </script>
+    {% endif %}
 
-{% if message %}
-  <p id="message" style="display:block;" class="notif">{{ message }}</p>
-  <script>
-      var message = document.getElementById("message");
-      setTimeout(() => {
-          message.style.display = "none";
-      }, 5000)
-  </script>
-{% endif %}  
+    <h1 class="centered text-center my-2">Welcome</h1>
 
-<div id="add_refs"></div>
-<div id="list_refs"></div>
+    <div id="add_refs"></div>
+    <div id="list_refs"></div>
 
-   <script>
-     $(function() {
-         $("#add_refs").load("reference_forms");
-      });
-      $(function() {
-         $("#list_refs").load("reference_lists");
-      });
-   </script>
+    <script>
+        $(function() {
+            $("#add_refs").load("reference_forms");
+        });
+        $(function() {
+            $("#list_refs").load("reference_lists");
+        });
+    </script>
 
 {% endblock %}

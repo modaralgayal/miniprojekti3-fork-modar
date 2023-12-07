@@ -2,10 +2,10 @@
 {% block content %}
 
     <div class="centered">
-        <h2 class="my-4">References</h2>
-        <form action="/bibtex">
-          <input type="submit" value="references to bibtex"/>
-        </form>
+        <div class="d-flex justify-content-between">
+            <h2 class="my-4">References</h2>
+            <a type="button" class="btn btn-lg btn-primary" style="height: 50px" href="{{ url_for("bibtex_file") }}">Download Bibtex-file</a>
+        </div>
         <h3  class="my-2">Books</h3>
         <form action="/delete_book" method="POST">
             <table class="table table-sm table-striped table-hover align-middle">

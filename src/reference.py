@@ -1,7 +1,6 @@
 from sqlalchemy.sql import text
 
 
-
 def add_book(title, author, year, publisher, url, db):
     sql = text(
         '''INSERT INTO books (title, author, b_year, publisher, b_url)
@@ -31,7 +30,6 @@ def delete_book(book_id, db):
     db.session.commit()
 
 
-
 def add_article(title, author, year, journal, url, db):
     sql = text(
         '''INSERT INTO articles (title, author, a_year, journal, a_url)
@@ -59,8 +57,6 @@ def delete_article(article_id, db):
         '''DELETE FROM articles WHERE article_id=:id''')
     db.session.execute(sql, {"id": article_id})
     db.session.commit()
-
-
 
 
 def add_inproceeding(title, author, year, url, db):
@@ -103,13 +99,11 @@ def get_data(db):
     return result
 
 
-
 def template_books(entry):
     result = '@book{' + entry[1] + str(
         entry[3]) + ',\n title = "' + entry[1] + '",\n author = "' + entry[2] + '",\n year = ' + str(   #pylint: disable=line-too-long
         entry[3]) + ',\n publisher = "' + entry[4] + '",\n url = "' + entry[5] + '",\n}\n\n'
     return result
-
 
 
 def template_articles(entry):
@@ -119,13 +113,11 @@ def template_articles(entry):
     return result
 
 
-
 def template_inproceedings(entry):
     result = '@inproceeding{' + entry[1] + str(
         entry[3]) + ',\n title = "' + entry[1] + '",\n author = "' + entry[2] + '",\n year = ' + str(   #pylint: disable=line-too-long
         entry[3]) + ',\n url = "' + entry[4] + '",\n}\n\n'
     return result
-
 
 
 def write_bibtex_file(data):
@@ -178,6 +170,7 @@ def create_schema_book(db):
     db.session.execute(sql)
     db.session.commit()
 
+    
 def create_schema_articles(db):
     sql = text(
         '''CREATE TABLE articles (
