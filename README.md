@@ -48,6 +48,6 @@ Shell can be exited with a command:
 > exit
 
 ## Documentation
-- [Työaikakirjanpito](https://docs.google.com/spreadsheets/d/1tvDweyWHiYNj0rdVt22RT_IMBiqbW4Og1WdRkrPofMc/edit?usp=sharing)
+- [Työaikakirjanpito & Sprint Backlog](https://docs.google.com/spreadsheets/d/1tvDweyWHiYNj0rdVt22RT_IMBiqbW4Og1WdRkrPofMc/edit?usp=sharing)
 - [Definition of Done](https://github.com/ValioEilax/miniprojekti3/blob/main/src/documents/dod.md)
-- [Product & Sprint Backlogs](https://github.com/users/ValioEilax/projects/1/views/1?layout=table)
+- [Product Backlog](https://github.com/users/ValioEilax/projects/1/views/1?layout=table)
