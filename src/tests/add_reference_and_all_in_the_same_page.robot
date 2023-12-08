@@ -2,7 +2,7 @@
 Resource          resource.robot
 Suite Setup  Open And Configure Browser
 Suite Teardown  Close Application
-# Test Template  Add Book
+
 
 
 *** Test Cases ***
