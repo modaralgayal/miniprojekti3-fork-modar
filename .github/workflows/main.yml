@@ -40,7 +40,6 @@ jobs:
         run: |
           export production=test
           export DATABASE_URL="postgresql://test:test@localhost:5432"
-          export SQLALCHEMY_DATABASE_URI ="postgresql://test:test@localhost:5432"
           poetry run coverage run --branch -m pytest
 
       - name: Coverage XML
@@ -66,5 +65,5 @@ jobs:
         run: |
           export production=test
           export DATABASE_URL="postgresql://test:test@localhost:5432"
-          export SQLALCHEMY_DATABASE_URI ="postgresql://test:test@localhost:5432"
+
           bash run_robot_tests.sh
