@@ -14,7 +14,8 @@ disable=cyclic-import,
         invalid-name,
         unspecified-encoding,
         consider-using-with,
-        wrong-import-position
+        wrong-import-position,
+        too-few-public-methods
 
 [DESIGN]
 
