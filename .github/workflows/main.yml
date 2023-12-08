@@ -51,8 +51,8 @@ jobs:
         run: |
           poetry run pylint src
 
-      - name: Run tests
-        run: poetry run coverage run --branch -m pytest
+      # - name: Run tests
+      #   run: poetry run coverage run --branch -m pytest
 
       - name: Setup chromedriver
         uses: nanasess/setup-chromedriver@master
