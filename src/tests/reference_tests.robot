@@ -22,7 +22,7 @@ Add A Book
     Input Text  id=b_author  Book Author
     Input Text  id=b_year  2022
     Input Text  id=b_publisher  Book Publisher
-    Input Text  id=b_url  Book Url
+    Input Text  id=b_url  https://www.helsinki.fi
     Click Button  Add Book
     Add Reference Succeeds With Message  Robot Book
 
@@ -35,7 +35,7 @@ Add An Article
     Input Text  id=a_author  Article Author
     Input Text  id=a_year  2022
     Input Text  id=a_journal  Article Journal
-    Input Text  id=a_url  Article Url
+    Input Text  id=a_url  https://www.helsinki.fi
     Click Button  Add Article
     Add Reference Succeeds With Message  Robot Article
 
@@ -46,7 +46,7 @@ Add A Inproceeding
     Input Text  id=i_title  Robot Inproceeding
     Input Text  id=i_author  Inproceeding Author
     Input Text  id=i_year  2021
-    Input Text  id=i_url  Inproceeding Url
+    Input Text  id=i_url  https://www.helsinki.fi
     Click Button  Add Inproceeding
     Add Reference Succeeds With Message  Robot Inproceeding
 
