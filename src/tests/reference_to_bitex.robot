@@ -9,7 +9,7 @@ Suite Teardown  Close Application
 
 Reference to Bibtex-file
     Go To          ${HOME_URL}
-    Click Button    name:bibtex
+    Click Element    name=bibtex
     Download Succeeds With Message  Downloaded Bibtex-file
 
 
