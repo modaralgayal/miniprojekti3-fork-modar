@@ -9,6 +9,7 @@ app = Flask(__name__)
 
 if getenv("production") == "test":
     DB_ADDRESS = "postgresql://test:test@localhost:5432"
+    SECRET_KEY = "1234"
 # if getenv("production") == "test":
 #     DB_ADDRESS = "postgresql:///test"
 
