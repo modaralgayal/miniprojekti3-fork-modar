@@ -1,5 +1,5 @@
 # miniprojekti3
-![GHA workflow badge](https://github.com/ValioEilax/miniprojekti3/workflows/CI/badge.svg) 
+[![GHA workflow badge](https://github.com/ValioEilax/miniprojekti3/workflows/CI/badge.svg)](https://github.com/ValioEilax/miniprojekti3/actions/workflows/main.yml) 
 [![codecov](https://codecov.io/gh/ValioEilax/miniprojekti3/graph/badge.svg?token=8WIEWYAJCL)](https://codecov.io/gh/ValioEilax/miniprojekti3)
 
 ## Description:
