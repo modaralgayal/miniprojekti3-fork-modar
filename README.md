@@ -54,3 +54,5 @@ Shell can be exited with a command:
 - [Product Backlog](https://github.com/users/ValioEilax/projects/1/views/1?layout=table)
 - [Retro](https://github.com/ValioEilax/miniprojekti3/blob/main/src/documents/retro.md)
 
+
+
