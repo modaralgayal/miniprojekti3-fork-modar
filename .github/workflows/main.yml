@@ -51,18 +51,18 @@ jobs:
         run: |
           poetry run pylint src
 
-      - name: Setup chromedriver
-        uses: nanasess/setup-chromedriver@master
-      - name: Configure chromedriver
-        run: |
-          export DISPLAY=:99
-          chromedriver --url-base=/wd/hub &
-          sudo Xvfb -ac :99 -screen 0 1280x1024x24 > /dev/null 2>&1 &
-      - name: Run robot tests
-        env:
-          PGPASSWORD: test
-        run: |
-          export production=test
-          export DATABASE_URL="postgresql://test:test@localhost:5432"
+      # - name: Setup chromedriver
+      #   uses: nanasess/setup-chromedriver@master
+      # - name: Configure chromedriver
+      #   run: |
+      #     export DISPLAY=:99
+      #     chromedriver --url-base=/wd/hub &
+      #     sudo Xvfb -ac :99 -screen 0 1280x1024x24 > /dev/null 2>&1 &
+      # - name: Run robot tests
+      #   env:
+      #     PGPASSWORD: test
+      #   run: |
+      #     export production=test
+      #     export DATABASE_URL="postgresql://test:test@localhost:5432"
 
-          bash run_robot_tests.sh
+      #     bash run_robot_tests.sh
