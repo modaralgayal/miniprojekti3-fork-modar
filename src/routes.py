@@ -105,8 +105,6 @@ def bibtex_file():
         data = reference.get_data(db)
         reference.write_bibtex_file(data)
         path = 'viitteet.bib'
-        session['message'] = "Downloaded Bibtex-file"
-        session['message_type'] = 'success'
         return send_file(path, as_attachment=True)
     except Exception:
         session['message'] = "Error when downloading Bibtex.file"
