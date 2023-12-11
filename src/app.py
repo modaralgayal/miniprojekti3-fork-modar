@@ -12,6 +12,7 @@ if getenv("production") == "test":
     SECRET_KEY = "1234"
 # if getenv("production") == "test":
 #     DB_ADDRESS = "postgresql:///test"
+# en tiedä mitä refaktoroida
 
 else:
     DB_ADDRESS = getenv("DATABASE_URL")
