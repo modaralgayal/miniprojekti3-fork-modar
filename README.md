@@ -1,5 +1,5 @@
 # miniprojekti3
-![GHA workflow badge](https://github.com/ValioEilax/miniprojekti3/workflows/CI/badge.svg) 
+[![GHA workflow badge](https://github.com/ValioEilax/miniprojekti3/workflows/CI/badge.svg)](https://github.com/ValioEilax/miniprojekti3/actions/workflows/main.yml) 
 [![codecov](https://codecov.io/gh/ValioEilax/miniprojekti3/graph/badge.svg?token=8WIEWYAJCL)](https://codecov.io/gh/ValioEilax/miniprojekti3)
 
 ## Description:
@@ -53,3 +53,4 @@ Shell can be exited with a command:
 - [Definition of Done](https://github.com/ValioEilax/miniprojekti3/blob/main/src/documents/dod.md)
 - [Product Backlog](https://github.com/users/ValioEilax/projects/1/views/1?layout=table)
 - [Retro](https://github.com/ValioEilax/miniprojekti3/blob/main/src/documents/retro.md)
+
